@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Search, Menu, X } from "lucide-react";
 
 function Navbar() {
@@ -33,18 +34,18 @@ function Navbar() {
           className="hidden lg:flex space-x-6 xl:space-x-8 text-sm xl:text-base font-medium"
           style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}
         >
-          <a href="#" className="text-black hover:text-gray-600 transition-colors">
+          <Link href="/" className="text-black hover:text-gray-600 transition-colors">
             Home
-          </a>
-          <a href="#" className="text-black hover:text-gray-600 transition-colors">
+          </Link>
+          <Link href="/about" className="text-black hover:text-gray-600 transition-colors">
             About
-          </a>
+          </Link>
           <a href="#" className="text-black hover:text-gray-600 transition-colors">
             Services
           </a>
-          <a href="#" className="text-black hover:text-gray-600 transition-colors">
+          <Link href="/projects" className="text-black hover:text-gray-600 transition-colors">
             Projects
-          </a>
+          </Link>
           <a href="#" className="text-black hover:text-gray-600 transition-colors">
             Locations
           </a>
@@ -61,9 +62,9 @@ function Navbar() {
           </button>
           
           {/* Contact Button - Hidden on small screens */}
-          <button className="hidden sm:block bg-black text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-full font-medium text-sm hover:bg-gray-800 transition-colors">
+          <Link href="/#contact-form" className="hidden sm:block bg-black text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-full font-medium text-sm hover:bg-gray-800 transition-colors">
             Contact
-          </button>
+          </Link>
 
           {/* Mobile Menu Toggle */}
           <button 
@@ -99,20 +100,20 @@ function Navbar() {
 
             {/* Mobile Menu Items */}
             <div className="flex flex-col py-6">
-              <a 
-                href="#" 
+              <Link 
+                href="/" 
                 className="px-6 py-3 text-black hover:bg-gray-50 transition-colors font-medium"
                 onClick={toggleMenu}
               >
                 Home
-              </a>
-              <a 
-                href="#" 
+              </Link>
+              <Link 
+                href="/about" 
                 className="px-6 py-3 text-black hover:bg-gray-50 transition-colors font-medium"
                 onClick={toggleMenu}
               >
                 About
-              </a>
+              </Link>
               <a 
                 href="#" 
                 className="px-6 py-3 text-black hover:bg-gray-50 transition-colors font-medium"
@@ -120,13 +121,13 @@ function Navbar() {
               >
                 Services
               </a>
-              <a 
-                href="#" 
+              <Link 
+                href="/projects" 
                 className="px-6 py-3 text-black hover:bg-gray-50 transition-colors font-medium"
                 onClick={toggleMenu}
               >
                 Projects
-              </a>
+              </Link>
               <a 
                 href="#" 
                 className="px-6 py-3 text-black hover:bg-gray-50 transition-colors font-medium"
@@ -144,9 +145,9 @@ function Navbar() {
               
               {/* Mobile Contact Button */}
               <div className="px-6 pt-4">
-                <button className="w-full bg-black text-white py-3 rounded-full font-medium hover:bg-gray-800 transition-colors">
+                <Link href="/#contact-form" className="block w-full bg-black text-white py-3 rounded-full font-medium hover:bg-gray-800 transition-colors text-center">
                   Contact
-                </button>
+                </Link>
               </div>
             </div>
           </div>

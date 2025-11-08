@@ -12,7 +12,7 @@ function Footer() {
           {/* Left: Tagline + Logo */}
           <div className="flex flex-col justify-between space-y-4 md:space-y-8 lg:space-y-12 order-2 md:order-1">
             <p className="text-white text-xs sm:text-sm font-normal">
-              Building the future with excellence
+              Powering infrastructure with reliable construction
             </p>
             <div className="flex items-center space-x-2 sm:space-x-3">
               <Image src="/nrk_logo.png" alt="Logo" width={32} height={32} className="h-6 w-6 sm:h-8 sm:w-8" />
@@ -31,8 +31,8 @@ function Footer() {
 
           {/* Right: Copyright */}
           <div className="text-white text-xs sm:text-sm font-normal text-center md:text-right order-3 md:order-3 max-w-full md:max-w-xs lg:max-w-none">
-            <span className="hidden sm:inline">Copyright © 2024 Elite Builders Inc. | All Rights Reserved</span>
-            <span className="sm:hidden">© 2024 Elite Builders Inc.</span>
+            <span className="hidden sm:inline">Copyright © 2019 NRK Construction Company | All Rights Reserved</span>
+            <span className="sm:hidden">© 2019 NRK Construction</span>
           </div>
         </div>
       </footer>

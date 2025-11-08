@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 function Home5() {
   const [expandedCard, setExpandedCard] = useState<number | null>(1) // Default to first card expanded
@@ -7,26 +8,26 @@ function Home5() {
   const trustPoints = [
     {
       id: 1,
-      title: "20+ Years of construction experience",
+      title: "Nearly 20 years of team experience",
       content: {
-        title: "On-time & budget-friendly execution",
-        description: "We prioritize efficient planning and cost-effective solutions to meet deadlines without exceeding budgets."
+        title: "Proven expertise since 2004",
+        description: "Our team brings nearly 20 years of experience in executing substation projects, starting from tower foundation works in 2004 and expanding to complete civil works."
       }
     },
     {
       id: 2,
-      title: "Licensed, insured, and industry-certified",
+      title: "Specialized in power infrastructure",
       content: {
-        title: "Professional certifications & insurance",
-        description: "Our team holds all necessary licenses and certifications, backed by comprehensive insurance coverage for your peace of mind."
+        title: "Complete substation solutions",
+        description: "We specialize in AIS, GIS, and GSS substations from 33 kV to 440 kV, delivering reliable and high-quality construction for all types of substation requirements."
       }
     },
     {
       id: 3,
-      title: "Sustainable & modern building practices",
+      title: "On-time delivery & quality standards",
       content: {
-        title: "Eco-friendly construction methods",
-        description: "We employ cutting-edge sustainable technologies and modern building practices to create environmentally responsible structures."
+        title: "Trusted partner in power sector",
+        description: "Established reputation for delivering projects on time with strong technical expertise and consistently adhering to safety and quality standards."
       }
     }
   ]
@@ -35,35 +36,109 @@ function Home5() {
     setExpandedCard(expandedCard === cardId ? null : cardId)
   }
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  }
+
+  const leftContentVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8
+      }
+    }
+  }
+
+  const cardVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.6
+      }
+    }
+  }
+
+  const expandedContentVariants = {
+    hidden: { 
+      opacity: 0, 
+      height: 0,
+      transition: {
+        duration: 0.3
+      }
+    },
+    visible: { 
+      opacity: 1, 
+      height: "auto" as const,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut" as const
+      }
+    }
+  }
+
   return (
     <div className="bg-gray-50 my-10 sm:my-16 lg:my-20 py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-start">
+        <motion.div 
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-start"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           {/* Left Content */}
-          <div className="space-y-6 sm:space-y-8">
+          <motion.div 
+            className="space-y-6 sm:space-y-8"
+            variants={leftContentVariants}
+          >
             <div>
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4 sm:mb-6 leading-tight" style={{ fontFamily: 'PlusJakartaSans-Bold, sans-serif' }}>
-                Why businesses trust elite builders Inc.?
+                Why power companies trust NRK Construction?
               </h2>
               <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>
-                With 20+ years of industry experience, we deliver high-quality, on-time, 
-                and cost-effective construction solutions. Our team is licensed, insured, 
-                and committed to excellence, ensuring every project meets the highest 
-                standards of safety and craftsmanship.
+                With nearly 20 years of team experience in substation construction, we deliver 
+                high-quality, reliable infrastructure for power substations. Our expertise spans 
+                AIS, GIS, and GSS substations from 33 kV to 440 kV, ensuring excellence in every project.
               </p>
-              <button className="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base rounded-full font-medium hover:bg-gray-800 transition-colors inline-flex items-center space-x-2 w-full sm:w-auto justify-center sm:justify-start">
+              <motion.button 
+                onClick={() => {
+                  const contactForm = document.getElementById('contact-form');
+                  contactForm?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+                className="bg-black text-white px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base rounded-full font-medium hover:bg-gray-800 transition-colors inline-flex items-center space-x-2 w-full sm:w-auto justify-center sm:justify-start"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <span style={{ fontFamily: 'PlusJakartaSans-Bold, sans-serif' }}>Start your project</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-              </button>
+              </motion.button>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Content - Expandable Cards */}
           <div className="space-y-3 sm:space-y-4">
-            {trustPoints.map((point) => (
-              <div key={point.id} className="border border-gray-200 rounded-xl sm:rounded-2xl overflow-hidden">
+            {trustPoints.map((point, index) => (
+              <motion.div 
+                key={point.id} 
+                className="border border-gray-200 rounded-xl sm:rounded-2xl overflow-hidden"
+                variants={cardVariants}
+                custom={index}
+                whileHover={{ scale: 1.02 }}
+              >
                 {/* Card Header */}
                 <button
                   onClick={() => toggleCard(point.id)}
@@ -89,22 +164,31 @@ function Home5() {
                 </button>
 
                 {/* Expanded Content */}
-                {expandedCard === point.id && (
-                  <div className="text-white p-4 sm:p-6 relative" style={{ backgroundColor: '#F9773B' }}>
+                <AnimatePresence>
+                  {expandedCard === point.id && (
+                    <motion.div 
+                      className="text-white p-4 sm:p-6 relative" 
+                      style={{ backgroundColor: '#F9773B' }}
+                      variants={expandedContentVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="hidden"
+                    >
                     {/* Close button */}
                     
                     <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 pr-8 sm:pr-10">
                       {point.content.title}
                     </h3>
-                    <p className="text-white/90 leading-relaxed text-sm sm:text-base">
-                      {point.content.description}
-                    </p>
-                  </div>
-                )}
-              </div>
+                      <p className="text-white/90 leading-relaxed text-sm sm:text-base">
+                        {point.content.description}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   )

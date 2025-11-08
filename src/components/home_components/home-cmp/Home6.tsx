@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 function Home6() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -13,30 +14,40 @@ function Home6() {
     {
       id: 1,
       rating: 5,
-      title: "Reliable, Efficient, and On-Time!",
-      quote: "Elite Builders Inc. exceeded our expectations! Their attention to detail and efficiency made our new headquarters a reality on time and within budget.",
-      author: "Emily Foster",
-      position: "Director, Bennett Retail Group",
-      avatar: "/buildings.jpg", // Using the same image as requested
+      title: "Exceptional Technical Expertise!",
+      quote: "NRK Construction delivered our substation project with outstanding quality and precision. Their experience in power infrastructure is truly remarkable.",
+      author: "Sumaja Electroinfra Pvt Ltd",
+      position: "Client Partner",
+      avatar: "/buildings.jpg",
       projectImage: "/buildings.jpg"
     },
     {
       id: 2,
       rating: 5,
-      title: "Outstanding Quality & Service!",
-      quote: "The team's professionalism and dedication to excellence was evident throughout the entire construction process. Highly recommended!",
-      author: "Michael Chen",
-      position: "CEO, Tech Solutions Inc",
+      title: "On-Time & Quality Focused!",
+      quote: "The team's commitment to safety standards and timely delivery made our substation project a complete success. Highly professional work!",
+      author: "Mangal Electrical Industries Pvt Ltd",
+      position: "Client Partner",
       avatar: "/buildings.jpg",
       projectImage: "/buildings.jpg"
     },
     {
       id: 3,
       rating: 5,
-      title: "Exceeded All Expectations!",
-      quote: "From initial planning to final delivery, Elite Builders demonstrated unmatched expertise and commitment to our project's success.",
-      author: "Sarah Williams",
-      position: "Project Manager, Urban Development",
+      title: "Trusted Partner for Infrastructure!",
+      quote: "With nearly 20 years of experience, NRK Construction has proven to be our most reliable partner for substation civil works. Excellence guaranteed!",
+      author: "Powertech Electroinfra Pvt Ltd",
+      position: "Client Partner",
+      avatar: "/buildings.jpg",
+      projectImage: "/buildings.jpg"
+    },
+    {
+      id: 4,
+      rating: 5,
+      title: "Reliable & Professional Service!",
+      quote: "Outstanding execution and dedication to quality. NRK Construction consistently delivers excellent results on our power infrastructure projects.",
+      author: "Bhanwaria Infra Projects Pvt Ltd",
+      position: "Client Partner",
       avatar: "/buildings.jpg",
       projectImage: "/buildings.jpg"
     }
@@ -98,7 +109,13 @@ function Home6() {
 
   return (
     <div className="bg-gray-50 mx-4 sm:mx-8 lg:mx-15 rounded-2xl sm:rounded-3xl py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
+      <motion.div 
+        className="max-w-6xl mx-auto"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.8 }}
+      >
         <div 
           ref={slideRef}
           className="relative overflow-hidden"
@@ -186,17 +203,19 @@ function Home6() {
         {/* Navigation Dots */}
         <div className="flex justify-center space-x-2 mt-8 sm:mt-10 lg:mt-12">
           {testimonials.map((_, index) => (
-            <button
+            <motion.button
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-colors ${
                 currentSlide === index ? 'bg-orange-500' : 'bg-gray-300'
               }`}
               style={{ backgroundColor: currentSlide === index ? '#F9773B' : undefined }}
+              whileHover={{ scale: 1.3 }}
+              whileTap={{ scale: 0.9 }}
             />
           ))}
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }

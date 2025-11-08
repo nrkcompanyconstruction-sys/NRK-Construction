@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react'
+import { motion } from 'framer-motion'
 
 function Home7() {
   const [formData, setFormData] = useState({
@@ -23,26 +24,83 @@ function Home7() {
     console.log('Form submitted:', formData)
   }
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.1
+      }
+    }
+  }
+
+  const leftContentVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8
+      }
+    }
+  }
+
+  const formVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8
+      }
+    }
+  }
+
+  const inputVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5
+      }
+    }
+  }
+
   return (
-    <div className="bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
+    <div id="contact-form" className="bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start">
+        <motion.div 
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           {/* Left Content */}
-          <div className="space-y-4 sm:space-y-6 mb-8 lg:mb-0">
+          <motion.div 
+            className="space-y-4 sm:space-y-6 mb-8 lg:mb-0"
+            variants={leftContentVariants}
+          >
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black leading-tight">
-              Let&apos;s build something<br />
-              great together!
+              Let&apos;s build reliable<br />
+              power infrastructure together!
             </h2>
             <p className="text-gray-600 text-base sm:text-lg leading-relaxed max-w-md">
-              Get in touch with us for a consultation or quote on your next commercial project.
+              Get in touch with us for a consultation or quote on your next substation project.
             </p>
-          </div>
+          </motion.div>
 
           {/* Right Content - Contact Form */}
-          <div className="bg-gray-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8">
+          <motion.div 
+            className="bg-gray-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8"
+            variants={formVariants}
+          >
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               {/* Name Field */}
-              <div>
+              <motion.div variants={inputVariants}>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                   Name
                 </label>
@@ -55,10 +113,10 @@ function Home7() {
                   placeholder="Michael Carter"
                   className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors text-sm sm:text-base"
                 />
-              </div>
+              </motion.div>
 
               {/* Email Field */}
-              <div>
+              <motion.div variants={inputVariants}>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                   Email
                 </label>
@@ -71,10 +129,10 @@ function Home7() {
                   placeholder="michaelcarter@gmail.com"
                   className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:border-orange-500 transition-colors text-sm sm:text-base"
                 />
-              </div>
+              </motion.div>
 
               {/* Phone Field */}
-              <div>
+              <motion.div variants={inputVariants}>
                 <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                   Phone number
                 </label>
@@ -87,10 +145,10 @@ function Home7() {
                   placeholder="+1 650 213 7379"
                   className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:border-orange-500 transition-colors text-sm sm:text-base"
                 />
-              </div>
+              </motion.div>
 
               {/* Message Field */}
-              <div>
+              <motion.div variants={inputVariants}>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                   Message
                 </label>
@@ -103,21 +161,24 @@ function Home7() {
                   placeholder="Tell us about your project needs..."
                   className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:border-orange-500 transition-colors resize-none text-sm sm:text-base"
                 />
-              </div>
+              </motion.div>
 
               {/* Submit Button */}
-              <button
+              <motion.button
                 type="submit"
                 className="w-full bg-black text-white py-3 sm:py-4 px-6 rounded-full text-base sm:text-lg font-medium hover:bg-gray-800 transition-colors inline-flex items-center justify-center space-x-2"
+                variants={inputVariants}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <span>Submit</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-              </button>
+              </motion.button>
             </form>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   )
