@@ -1,123 +1,167 @@
-"use client"
+'use client'
+
 import React, { useState } from 'react'
-import { motion } from 'framer-motion'
+import { ArrowUpRight, Building2, Mail, Phone, Route, Zap } from 'lucide-react'
+import { motion, type Variants } from 'framer-motion'
+import CursorGrid from './CursorGrid'
 
 function Home7() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
   })
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }))
   }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
     console.log('Form submitted:', formData)
   }
 
-  // Animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1
-      }
-    }
+        staggerChildren: 0.12,
+        delayChildren: 0.1,
+      },
+    },
   }
 
-  const leftContentVariants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.8
-      }
-    }
-  }
-
-  const formVariants = {
-    hidden: { opacity: 0, x: 50 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.8
-      }
-    }
-  }
-
-  const inputVariants = {
-    hidden: { opacity: 0, y: 20 },
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 24 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5
-      }
-    }
+        duration: 0.7,
+        ease: 'easeOut',
+      },
+    },
   }
 
+  const projectTypes = [
+    { icon: Zap, label: 'Substations' },
+    { icon: Building2, label: 'Buildings' },
+    { icon: Route, label: 'RCC roads' },
+  ]
+
+  const inputClass = 'w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-sm text-slate-950 outline-none transition-colors placeholder:text-slate-400 focus:border-orange-400 focus:ring-4 focus:ring-orange-100'
+
   return (
-    <div id="contact-form" className="bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <motion.div 
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          {/* Left Content */}
-          <motion.div 
-            className="space-y-4 sm:space-y-6 mb-8 lg:mb-0"
-            variants={leftContentVariants}
-          >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black leading-tight">
-              Let&apos;s build reliable<br />
-              power infrastructure together!
+    <section id="contact-form" className="relative overflow-hidden bg-white px-3 py-12 sm:px-5 sm:py-16 lg:px-8 lg:py-20">
+      <motion.div
+        className="relative mx-auto max-w-[1780px] overflow-hidden rounded-[28px] bg-[#071320] p-5 text-white shadow-[0_28px_90px_rgba(7,19,32,0.22)] sm:rounded-[36px] sm:p-8 lg:p-12"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        style={{ fontFamily: 'PlusJakartaSans-Bold, sans-serif' }}
+      >
+        <div className="absolute inset-0 z-0 pointer-events-auto">
+          <CursorGrid
+            cellSize={64}
+            color="#ffffff"
+            radius={170}
+            falloff="smooth"
+            holdTime={500}
+            fadeDuration={900}
+            lineWidth={1}
+            maxOpacity={0.14}
+            fillOpacity={0.03}
+            gridOpacity={0.045}
+            cellRadius={4}
+            clickPulse
+            pulseSpeed={500}
+          />
+        </div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_22%,rgba(56,189,248,0.18),transparent_30%),radial-gradient(circle_at_18%_78%,rgba(249,115,22,0.20),transparent_32%)]" />
+
+        <div className="relative z-10 grid gap-7 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
+          <motion.div className="py-2 lg:py-6" variants={itemVariants}>
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.18em] text-slate-300 backdrop-blur-md">
+              <Mail className="h-4 w-4 text-orange-300" />
+              Project intake
+            </div>
+
+            <h2 className="mt-8 max-w-3xl text-3xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+              Let&apos;s build reliable power infrastructure together.
             </h2>
-            <p className="text-gray-600 text-base sm:text-lg leading-relaxed max-w-md">
-              Get in touch with us for a consultation or quote on your next substation project.
+
+            <p className="mt-5 max-w-xl text-base leading-8 text-slate-300 sm:text-lg" style={{ fontFamily: 'Inter-24pt-Medium, sans-serif' }}>
+              Share the basic project details and our team can discuss substation works, powerhouse construction, residential buildings, RCC roads, or complete civil infrastructure packages.
             </p>
+
+            <div className="mt-8 grid gap-3 sm:grid-cols-3">
+              {projectTypes.map(({ icon: Icon, label }) => (
+                <div key={label} className="rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur-md">
+                  <Icon className="h-5 w-5 text-orange-300" />
+                  <div className="mt-4 text-sm text-white/86">{label}</div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.07] p-5 backdrop-blur-md">
+              <div className="flex items-center gap-3">
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-orange-400/14 text-orange-300 ring-1 ring-orange-300/20">
+                  <Phone className="h-5 w-5" />
+                </span>
+                <div>
+                  <div className="text-xs uppercase tracking-[0.16em] text-slate-400">Response focus</div>
+                  <div className="mt-1 text-sm text-slate-200">Consultation, estimate, and technical scope discussion</div>
+                </div>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Right Content - Contact Form */}
-          <motion.div 
-            className="bg-gray-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8"
-            variants={formVariants}
+          <motion.div
+            className="rounded-[28px] border border-white/70 bg-white p-5 text-slate-950 shadow-[0_22px_70px_rgba(0,0,0,0.14)] sm:p-7 lg:p-8"
+            variants={itemVariants}
           >
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-              {/* Name Field */}
-              <motion.div variants={inputVariants}>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  placeholder="Michael Carter"
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors text-sm sm:text-base"
-                />
-              </motion.div>
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="name" className="mb-2 block text-sm font-bold text-slate-700">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="Michael Carter"
+                    className={inputClass}
+                  />
+                </div>
 
-              {/* Email Field */}
-              <motion.div variants={inputVariants}>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                <div>
+                  <label htmlFor="phone" className="mb-2 block text-sm font-bold text-slate-700">
+                    Phone number
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    placeholder="+91 98765 43210"
+                    className={inputClass}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="email" className="mb-2 block text-sm font-bold text-slate-700">
                   Email
                 </label>
                 <input
@@ -126,61 +170,38 @@ function Home7() {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  placeholder="michaelcarter@gmail.com"
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:border-orange-500 transition-colors text-sm sm:text-base"
+                  placeholder="michael@example.com"
+                  className={inputClass}
                 />
-              </motion.div>
+              </div>
 
-              {/* Phone Field */}
-              <motion.div variants={inputVariants}>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                  Phone number
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  placeholder="+1 650 213 7379"
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:border-orange-500 transition-colors text-sm sm:text-base"
-                />
-              </motion.div>
-
-              {/* Message Field */}
-              <motion.div variants={inputVariants}>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Message
+              <div>
+                <label htmlFor="message" className="mb-2 block text-sm font-bold text-slate-700">
+                  Project details
                 </label>
                 <textarea
                   id="message"
                   name="message"
-                  rows={4}
+                  rows={6}
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder="Tell us about your project needs..."
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:border-orange-500 transition-colors resize-none text-sm sm:text-base"
+                  placeholder="Tell us about location, voltage level, scope, timeline, and construction requirements..."
+                  className={`${inputClass} resize-none`}
                 />
-              </motion.div>
+              </div>
 
-              {/* Submit Button */}
-              <motion.button
+              <button
                 type="submit"
-                className="w-full bg-black text-white py-3 sm:py-4 px-6 rounded-full text-base sm:text-lg font-medium hover:bg-gray-800 transition-colors inline-flex items-center justify-center space-x-2"
-                variants={inputVariants}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-950 px-6 py-4 text-base font-bold text-white transition-colors hover:bg-orange-500"
               >
-                <span>Submit</span>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1 8H15M15 8L8 1M15 8L8 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </motion.button>
+                Submit project enquiry
+                <ArrowUpRight className="h-4 w-4" />
+              </button>
             </form>
           </motion.div>
-        </motion.div>
-      </div>
-    </div>
+        </div>
+      </motion.div>
+    </section>
   )
 }
 

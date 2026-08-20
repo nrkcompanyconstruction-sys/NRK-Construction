@@ -1,133 +1,141 @@
 'use client'
+
 import React from 'react'
-import { motion } from 'framer-motion'
+import { ArrowUpRight, BadgeCheck, HardHat, Landmark, Zap } from 'lucide-react'
+import { motion, type Variants } from 'framer-motion'
 import { useRouter } from 'next/navigation'
+import CursorGrid from './CursorGrid'
 
 function Home2() {
   const router = useRouter()
 
-  const handleAboutClick = () => {
-    router.push('/about')
-  }
-
-  // Animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1
-      }
-    }
+        staggerChildren: 0.14,
+        delayChildren: 0.1,
+      },
+    },
   }
 
-  const tabVariants = {
-    hidden: { opacity: 0, y: -30, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        type: "spring" as const,
-        stiffness: 100
-      }
-    }
-  }
-
-  const panelVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.8,
-        delay: 0.2
-      }
-    }
-  }
-
-  const textVariants = {
-    hidden: { opacity: 0, y: 20 },
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 24 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
-        delay: 0.4
-      }
-    }
+        duration: 0.7,
+        ease: 'easeOut',
+      },
+    },
   }
 
-  const buttonVariants = {
-    hidden: { opacity: 0, scale: 0 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        delay: 0.6,
-        type: "spring" as const,
-        stiffness: 200
-      }
-    }
-  }
+  const capabilities = [
+    { icon: Zap, label: 'AIS, GIS and GSS substation civil works' },
+    { icon: Landmark, label: 'Powerhouse and control-room development' },
+    { icon: HardHat, label: 'Roads, foundations, trenches and structures' },
+  ]
 
   return (
-    <section className="relative py-12 sm:py-16 px-4 sm:px-6 lg:px-20 bg-white">
-      <motion.div 
-        className="max-w-7xl mx-auto relative"
+    <section className="relative overflow-hidden bg-[#f3f6f8] px-3 py-12 sm:px-5 sm:py-16 lg:px-8 lg:py-20">
+      <div className="absolute inset-0 z-0 pointer-events-auto">
+        <CursorGrid
+          cellSize={64}
+          color="#111827"
+          radius={170}
+          falloff="smooth"
+          holdTime={500}
+          fadeDuration={900}
+          lineWidth={1}
+          maxOpacity={0.22}
+          fillOpacity={0.025}
+          gridOpacity={0.035}
+          cellRadius={4}
+          clickPulse
+          pulseSpeed={500}
+        />
+      </div>
+
+      <motion.div
+        className="relative z-10 mx-auto grid max-w-[1780px] gap-5 lg:grid-cols-[0.86fr_1.14fr]"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.25 }}
+        style={{ fontFamily: 'PlusJakartaSans-Bold, sans-serif' }}
       >
-        {/* Orange tab */}
-        <motion.div 
-          className="absolute -top-3 sm:-top-4 lg:-top-6 left-2 sm:left-4 lg:left-8 z-10"
-          variants={tabVariants}
+        <motion.div
+          className="rounded-[28px] border border-white/70 bg-white/80 p-6 shadow-[0_22px_70px_rgba(15,23,42,0.08)] backdrop-blur-md sm:p-8 lg:p-10"
+          variants={itemVariants}
         >
-          <span className="inline-block bg-white text-orange-500 text-xs sm:text-sm font-medium rounded-lg sm:rounded-xl px-3 sm:px-4 lg:px-8 py-2 sm:py-3 lg:py-5 shadow-sm">
-            About us
-          </span>
-        </motion.div>
-
-        {/* Rounded panel */}
-        <motion.div 
-          className="mt-6 sm:mt-8 lg:mt-6 bg-gray-50 rounded-[20px] sm:rounded-[24px] lg:rounded-[28px] p-6 sm:p-8 lg:p-12 xl:p-16 shadow-sm pb-16 sm:pb-8 lg:pb-12 xl:pb-16"
-          variants={panelVariants}
-        >
-          <div className="max-w-5xl mx-auto">
-            <motion.p 
-              className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-semibold text-gray-900 leading-tight sm:leading-snug md:leading-snug text-justify"
-              variants={textVariants}
-            >
-              NRK Construction Company specializes in civil construction works for power substations. 
-              With nearly 20 years of experience in executing substation projects of various capacities, 
-              we deliver reliable and high-quality construction for AIS, GIS, and GSS substations ranging 
-              from 33 kV to 440 kV, making us a trusted partner in the power infrastructure sector.
-            </motion.p>
+          <div className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-2 text-xs uppercase tracking-[0.18em] text-orange-600">
+            <BadgeCheck className="h-4 w-4" />
+            About NRK
           </div>
+
+          <h2 className="mt-8 max-w-xl text-3xl font-bold leading-tight text-slate-950 sm:text-4xl lg:text-5xl">
+            Built for demanding power infrastructure environments.
+          </h2>
+
+          <p className="mt-5 max-w-xl text-base leading-8 text-slate-600 sm:text-lg" style={{ fontFamily: 'Inter-24pt-Medium, sans-serif' }}>
+            NRK Construction Company specializes in civil construction works for power substations, combining field discipline, technical coordination, and dependable delivery for high-voltage infrastructure.
+          </p>
+
+          <button
+            onClick={() => router.push('/about')}
+            aria-label="Go to About Us page"
+            className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-950 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-slate-800 sm:w-auto"
+          >
+            Know our story
+            <ArrowUpRight className="h-4 w-4" />
+          </button>
         </motion.div>
 
-        {/* Floating button at bottom-right */}
-        <motion.div 
-          className="absolute right-2 sm:right-0 lg:right-0 bottom-2 sm:bottom-4 lg:bottom-6 transform translate-x-0 sm:translate-x-2 lg:translate-x-6"
-          variants={buttonVariants}
+        <motion.div
+          className="relative overflow-hidden rounded-[28px] border border-white/12 bg-[#071320] p-6 text-white shadow-[0_24px_90px_rgba(7,19,32,0.22)] sm:p-8 lg:p-10"
+          variants={itemVariants}
         >
-          <motion.button
-            onClick={handleAboutClick}
-            aria-label="Go to About Us page"
-            className="w-12 h-12 sm:w-14 sm:h-14 lg:w-15 lg:h-15 rounded-md bg-black text-white flex items-center justify-center border-2 sm:border-4 border-white shadow-md hover:bg-gray-800 transition-colors cursor-pointer"
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <svg width="14" height="14" className="sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-              <path d="M13 5L20 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M20 5H13V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </motion.button>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(56,189,248,0.20),transparent_32%),radial-gradient(circle_at_22%_80%,rgba(249,115,22,0.18),transparent_30%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:42px_42px]" />
+
+          <div className="relative grid gap-6 lg:grid-cols-[1fr_0.72fr]">
+            <div>
+              <div className="text-xs uppercase tracking-[0.2em] text-sky-200/70">Execution range</div>
+              <p className="mt-5 text-2xl leading-tight text-white sm:text-3xl lg:text-4xl">
+                Nearly 20 years of team experience across 33 kV to 440 kV substation projects.
+              </p>
+            </div>
+
+            <div className="grid gap-3">
+              {capabilities.map(({ icon: Icon, label }) => (
+                <motion.div
+                  key={label}
+                  className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur-md"
+                  whileHover={{ x: 4, backgroundColor: 'rgba(255,255,255,0.14)' }}
+                >
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-orange-400/14 text-orange-300 ring-1 ring-orange-300/20">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <span className="text-sm leading-5 text-white/84">{label}</span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative mt-8 grid grid-cols-3 gap-3 border-t border-white/10 pt-5">
+            {[
+              ['38+', 'Projects'],
+              ['440 kV', 'Capacity'],
+              ['20 yrs', 'Team exp.'],
+            ].map(([value, label]) => (
+              <div key={label} className="rounded-2xl bg-white/[0.07] px-4 py-4 ring-1 ring-white/10">
+                <div className="text-2xl font-bold text-white sm:text-3xl">{value}</div>
+                <div className="mt-1 text-xs text-slate-300">{label}</div>
+              </div>
+            ))}
+          </div>
         </motion.div>
       </motion.div>
     </section>

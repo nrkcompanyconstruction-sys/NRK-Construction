@@ -1,7 +1,10 @@
-"use client"
-import React, { useState, useEffect, useRef } from 'react'
+'use client'
+
+import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { ArrowLeft, ArrowRight, Quote, Star } from 'lucide-react'
+import { motion, type Variants } from 'framer-motion'
+import CursorGrid from './CursorGrid'
 
 function Home6() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -14,57 +17,66 @@ function Home6() {
     {
       id: 1,
       rating: 5,
-      title: "Exceptional Technical Expertise!",
-      quote: "NRK Construction delivered our substation project with outstanding quality and precision. Their experience in power infrastructure is truly remarkable.",
-      author: "Sumaja Electroinfra Pvt Ltd",
-      position: "Client Partner",
-      avatar: "/buildings.jpg",
-      projectImage: "/buildings.jpg"
+      title: 'Exceptional technical expertise',
+      quote: 'NRK Construction delivered our substation project with outstanding quality and precision. Their experience in power infrastructure is truly remarkable.',
+      author: 'Sumaja Electroinfra Pvt Ltd',
+      position: 'Client Partner',
+      projectType: 'Substation civil package',
+      projectImage: '/buildings.jpg',
     },
     {
       id: 2,
       rating: 5,
-      title: "On-Time & Quality Focused!",
-      quote: "The team's commitment to safety standards and timely delivery made our substation project a complete success. Highly professional work!",
-      author: "Mangal Electrical Industries Pvt Ltd",
-      position: "Client Partner",
-      avatar: "/buildings.jpg",
-      projectImage: "/buildings.jpg"
+      title: 'On-time and quality focused',
+      quote: 'The team&apos;s commitment to safety standards and timely delivery made our substation project a complete success. Highly professional work.',
+      author: 'Mangal Electrical Industries Pvt Ltd',
+      position: 'Client Partner',
+      projectType: 'Power infrastructure works',
+      projectImage: '/buildings.jpg',
     },
     {
       id: 3,
       rating: 5,
-      title: "Trusted Partner for Infrastructure!",
-      quote: "With nearly 20 years of experience, NRK Construction has proven to be our most reliable partner for substation civil works. Excellence guaranteed!",
-      author: "Powertech Electroinfra Pvt Ltd",
-      position: "Client Partner",
-      avatar: "/buildings.jpg",
-      projectImage: "/buildings.jpg"
+      title: 'Trusted partner for infrastructure',
+      quote: 'With nearly 20 years of experience, NRK Construction has proven to be our most reliable partner for substation civil works.',
+      author: 'Powertech Electroinfra Pvt Ltd',
+      position: 'Client Partner',
+      projectType: 'GSS construction works',
+      projectImage: '/buildings.jpg',
     },
     {
       id: 4,
       rating: 5,
-      title: "Reliable & Professional Service!",
-      quote: "Outstanding execution and dedication to quality. NRK Construction consistently delivers excellent results on our power infrastructure projects.",
-      author: "Bhanwaria Infra Projects Pvt Ltd",
-      position: "Client Partner",
-      avatar: "/buildings.jpg",
-      projectImage: "/buildings.jpg"
-    }
+      title: 'Reliable and professional service',
+      quote: 'Outstanding execution and dedication to quality. NRK Construction consistently delivers excellent results on our power infrastructure projects.',
+      author: 'Bhanwaria Infra Projects Pvt Ltd',
+      position: 'Client Partner',
+      projectType: 'Electrical infrastructure',
+      projectImage: '/buildings.jpg',
+    },
   ]
 
-  // Auto-slide functionality
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.7,
+        ease: 'easeOut',
+      },
+    },
+  }
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isDragging) {
         setCurrentSlide((prev) => (prev + 1) % testimonials.length)
       }
-    }, 5000) // Change slide every 5 seconds
+    }, 5000)
 
     return () => clearInterval(interval)
   }, [isDragging, testimonials.length])
 
-  // Touch/Mouse drag handlers
   const handleStart = (clientX: number) => {
     setIsDragging(true)
     setStartX(clientX)
@@ -72,151 +84,168 @@ function Home6() {
 
   const handleMove = (clientX: number) => {
     if (!isDragging) return
-    const diff = clientX - startX
-    setTranslateX(diff)
+    setTranslateX(clientX - startX)
   }
 
   const handleEnd = () => {
     if (!isDragging) return
-    
-    const threshold = window.innerWidth < 640 ? 50 : 100 // Smaller threshold for mobile
+
+    const threshold = window.innerWidth < 640 ? 50 : 100
     if (translateX > threshold) {
-      // Swipe right - go to previous
-      setCurrentSlide((prev) => prev === 0 ? testimonials.length - 1 : prev - 1)
+      setCurrentSlide((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))
     } else if (translateX < -threshold) {
-      // Swipe left - go to next
       setCurrentSlide((prev) => (prev + 1) % testimonials.length)
     }
-    
+
     setIsDragging(false)
     setTranslateX(0)
   }
 
-  const renderStars = (rating: number) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <svg
-        key={i}
-        width="18"
-        height="18"
-        viewBox="0 0 24 24"
-        fill={i < rating ? "#F9773B" : "#E5E7EB"}
-        className="inline-block sm:w-5 sm:h-5"
-      >
-        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-      </svg>
-    ))
+  const goToPrevious = () => {
+    setCurrentSlide((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))
+  }
+
+  const goToNext = () => {
+    setCurrentSlide((prev) => (prev + 1) % testimonials.length)
   }
 
   return (
-    <div className="bg-gray-50 mx-4 sm:mx-8 lg:mx-15 rounded-2xl sm:rounded-3xl py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-      <motion.div 
-        className="max-w-6xl mx-auto"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.8 }}
+    <section className="relative overflow-hidden bg-[#f3f6f8] px-3 py-12 sm:px-5 sm:py-16 lg:px-8 lg:py-20">
+      <motion.div
+        className="relative mx-auto max-w-[1780px] overflow-hidden rounded-[28px] border border-white/70 bg-white/80 p-5 shadow-[0_24px_80px_rgba(15,23,42,0.09)] backdrop-blur-md sm:rounded-[36px] sm:p-8 lg:p-10"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={containerVariants}
+        style={{ fontFamily: 'PlusJakartaSans-Bold, sans-serif' }}
       >
-        <div 
-          ref={slideRef}
-          className="relative overflow-hidden"
-          onMouseDown={(e) => handleStart(e.clientX)}
-          onMouseMove={(e) => handleMove(e.clientX)}
-          onMouseUp={handleEnd}
-          onMouseLeave={handleEnd}
-          onTouchStart={(e) => handleStart(e.touches[0].clientX)}
-          onTouchMove={(e) => handleMove(e.touches[0].clientX)}
-          onTouchEnd={handleEnd}
-          style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
-        >
-          <div 
-            className="flex transition-transform duration-500 ease-out"
-            style={{ 
-              transform: `translateX(calc(-${currentSlide * 100}% + ${isDragging ? translateX : 0}px))`
-            }}
+        <div className="absolute inset-0 z-0 pointer-events-auto">
+          <CursorGrid
+            cellSize={64}
+            color="#111827"
+            radius={170}
+            falloff="smooth"
+            holdTime={500}
+            fadeDuration={900}
+            lineWidth={1}
+            maxOpacity={0.17}
+            fillOpacity={0.02}
+            gridOpacity={0.035}
+            cellRadius={4}
+            clickPulse
+            pulseSpeed={500}
+          />
+        </div>
+
+        <div className="relative z-10">
+          <div className="mb-8 flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs uppercase tracking-[0.18em] text-slate-600">
+                <Quote className="h-4 w-4 text-orange-500" />
+                Client confidence
+              </div>
+              <h2 className="mt-6 max-w-4xl text-3xl font-bold leading-tight text-slate-950 sm:text-5xl lg:text-6xl">
+                Partners who count on disciplined infrastructure delivery.
+              </h2>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={goToPrevious}
+                className="grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white text-slate-950 transition-colors hover:bg-slate-950 hover:text-white"
+                aria-label="Previous testimonial"
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </button>
+              <button
+                onClick={goToNext}
+                className="grid h-11 w-11 place-items-center rounded-full bg-slate-950 text-white transition-colors hover:bg-orange-500"
+                aria-label="Next testimonial"
+              >
+                <ArrowRight className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+
+          <div
+            ref={slideRef}
+            className="relative overflow-hidden"
+            onMouseDown={(e) => handleStart(e.clientX)}
+            onMouseMove={(e) => handleMove(e.clientX)}
+            onMouseUp={handleEnd}
+            onMouseLeave={handleEnd}
+            onTouchStart={(e) => handleStart(e.touches[0].clientX)}
+            onTouchMove={(e) => handleMove(e.touches[0].clientX)}
+            onTouchEnd={handleEnd}
+            style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
           >
-            {testimonials.map((testimonial, index) => (
-              <div key={testimonial.id} className="w-full flex-shrink-0 min-w-full">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center px-2 sm:px-4">
-                  {/* Left side - Building Image */}
-                  <div className="relative order-2 lg:order-1">
-                    <div className="relative h-64 sm:h-80 lg:h-96 rounded-xl sm:rounded-2xl overflow-hidden bg-gray-200">
+            <div
+              className="flex transition-transform duration-500 ease-out"
+              style={{
+                transform: `translateX(calc(-${currentSlide * 100}% + ${isDragging ? translateX : 0}px))`,
+              }}
+            >
+              {testimonials.map((testimonial, index) => (
+                <div key={testimonial.id} className="w-full min-w-full flex-shrink-0">
+                  <div className="grid gap-5 lg:grid-cols-[0.92fr_1.08fr]">
+                    <div className="relative min-h-[320px] overflow-hidden rounded-[28px] bg-slate-900">
                       <Image
                         src={testimonial.projectImage}
-                        alt="Construction project"
+                        alt={testimonial.projectType}
                         fill
-                        className="object-cover"
+                        className="object-cover opacity-72"
                         priority={index === 0}
                       />
-                    </div>
-                  </div>
-
-                  {/* Right side - Testimonial Content */}
-                  <div className="space-y-4 sm:space-y-6 order-1 lg:order-2">
-                    {/* Slide indicator */}
-                    <div className="text-left sm:text-right">
-                      <span className="text-gray-400 text-base sm:text-lg font-light">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                    </div>
-
-                    {/* Star Rating */}
-                    <div className="flex items-center space-x-1">
-                      {renderStars(testimonial.rating)}
-                    </div>
-
-                    {/* Title */}
-                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-black leading-tight">
-                      {testimonial.title}
-                    </h3>
-
-                    {/* Quote */}
-                    <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed">
-                      {testimonial.quote}
-                    </p>
-
-                    {/* Author Info */}
-                    <div className="flex items-center space-x-3 sm:space-x-4">
-                      <div className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
-                        <Image
-                          src={testimonial.avatar}
-                          alt={testimonial.author}
-                          fill
-                          className="object-cover"
-                        />
+                      <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(7,19,32,0.88),rgba(7,19,32,0.18))]" />
+                      <div className="absolute inset-x-5 bottom-5 rounded-2xl border border-white/12 bg-white/10 p-4 text-white backdrop-blur-md">
+                        <div className="text-xs uppercase tracking-[0.16em] text-orange-200">{testimonial.projectType}</div>
+                        <div className="mt-2 text-sm text-slate-200" style={{ fontFamily: 'Inter-24pt-Medium, sans-serif' }}>
+                          {String(index + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="font-semibold text-black text-base sm:text-lg">
-                          {testimonial.author}
-                        </h4>
-                        <p className="text-gray-600 text-xs sm:text-sm">
-                          {testimonial.position}
+                    </div>
+
+                    <div className="relative overflow-hidden rounded-[28px] bg-[#071320] p-6 text-white sm:p-8 lg:p-10">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(56,189,248,0.18),transparent_30%),radial-gradient(circle_at_18%_80%,rgba(249,115,22,0.18),transparent_30%)]" />
+                      <div className="relative">
+                        <div className="flex items-center gap-1">
+                          {Array.from({ length: testimonial.rating }).map((_, starIndex) => (
+                            <Star key={starIndex} className="h-5 w-5 fill-orange-400 text-orange-400" />
+                          ))}
+                        </div>
+
+                        <h3 className="mt-7 text-2xl font-bold leading-tight text-white sm:text-4xl">{testimonial.title}</h3>
+                        <p className="mt-5 text-base leading-8 text-slate-300 sm:text-lg" style={{ fontFamily: 'Inter-24pt-Medium, sans-serif' }}>
+                          {testimonial.quote}
                         </p>
+
+                        <div className="mt-8 border-t border-white/10 pt-6">
+                          <h4 className="text-lg font-bold text-white">{testimonial.author}</h4>
+                          <p className="mt-1 text-sm text-slate-400">{testimonial.position}</p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-8 flex justify-center gap-2">
+            {testimonials.map((testimonial, index) => (
+              <button
+                key={testimonial.id}
+                onClick={() => setCurrentSlide(index)}
+                className={`h-2.5 rounded-full transition-all ${
+                  currentSlide === index ? 'w-9 bg-orange-500' : 'w-2.5 bg-slate-300'
+                }`}
+                aria-label={`Go to testimonial ${index + 1}`}
+              />
             ))}
           </div>
         </div>
-
-        {/* Navigation Dots */}
-        <div className="flex justify-center space-x-2 mt-8 sm:mt-10 lg:mt-12">
-          {testimonials.map((_, index) => (
-            <motion.button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-colors ${
-                currentSlide === index ? 'bg-orange-500' : 'bg-gray-300'
-              }`}
-              style={{ backgroundColor: currentSlide === index ? '#F9773B' : undefined }}
-              whileHover={{ scale: 1.3 }}
-              whileTap={{ scale: 0.9 }}
-            />
-          ))}
-        </div>
       </motion.div>
-    </div>
+    </section>
   )
 }
 
