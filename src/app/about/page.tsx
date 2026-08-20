@@ -3,96 +3,109 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { HiArrowLeft } from 'react-icons/hi2'
+import { ArrowUpRight } from 'lucide-react'
 
 export default function AboutPage() {
   const handleContactClick = () => {
-    // Navigate to home page with hash
     window.location.href = '/#contact-form'
   }
 
   return (
-    <div className="min-h-screen bg-white pt-20 md:pt-24" style={{ fontFamily: 'PlusJakartaSans-Bold, sans-serif' }}>
+    <div className="min-h-screen bg-[#f3f6f8] pb-12" style={{ fontFamily: 'PlusJakartaSans-Bold, sans-serif' }}>
+      
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-orange-500 to-orange-600 text-white py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <Link href="/" className="inline-flex items-center gap-2 text-white/90 hover:text-white mb-8 transition-colors">
-            <HiArrowLeft className="w-5 h-5" />
+      <section className="relative overflow-hidden bg-[#06111f] text-white pt-32 pb-20 px-5 sm:px-8 lg:px-12 rounded-b-[40px] shadow-[0_28px_90px_rgba(6,17,31,0.15)]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_30%,rgba(249,115,22,0.16),transparent_31%),linear-gradient(90deg,rgba(2,6,14,0.94)_0%,rgba(2,6,14,0.80)_38%,rgba(2,6,14,0.30)_68%,rgba(2,6,14,0.18)_100%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        
+        <div className="relative z-10 max-w-[1780px] mx-auto">
+          <Link href="/" className="inline-flex items-center gap-2 text-white/70 hover:text-white mb-10 transition-colors font-medium text-sm tracking-wide uppercase" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>
+            <HiArrowLeft className="w-4 h-4" />
             Back to Home
           </Link>
           <motion.h1 
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 max-w-4xl leading-[1.1]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            About NRK
+            About NRK Construction
           </motion.h1>
           <motion.p 
-            className="text-xl md:text-2xl text-white/90 max-w-3xl"
+            className="text-lg md:text-xl text-slate-300/90 max-w-3xl leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}
           >
-            Building the backbone of India&apos;s power infrastructure with excellence and reliability
+            Building the backbone of India&apos;s power infrastructure with precision, discipline, and uncompromising reliability.
           </motion.p>
         </div>
       </section>
 
       {/* Our Story Section */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+      <section className="pt-16 pb-8 px-4 sm:px-8">
+        <div className="max-w-[1780px] mx-auto">
+          <div className="grid lg:grid-cols-[1fr_0.8fr] gap-8 items-stretch">
+            
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
+              className="bg-white rounded-[36px] p-8 sm:p-12 lg:p-16 shadow-[0_22px_70px_rgba(15,23,42,0.06)] border border-slate-100/50"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
-              <div className="space-y-4 text-gray-700 leading-relaxed">
+              <div className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-2 text-xs uppercase tracking-[0.18em] text-orange-600 mb-8">
+                Our Story
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-950 mb-8 leading-tight">Forging a legacy in high-voltage infrastructure.</h2>
+              <div className="space-y-6 text-slate-600 leading-relaxed text-base sm:text-lg" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>
                 <p>
                   NRK Construction has been at the forefront of electrical substation civil construction 
                   in India, delivering world-class infrastructure projects that power the nation&apos;s growth. 
-                  With years of experience and unwavering commitment to excellence, we have established 
+                  With nearly two decades of field experience and an unwavering commitment to excellence, we have established 
                   ourselves as a trusted partner in the power sector.
                 </p>
                 <p>
                   Our journey began with a vision to contribute to India&apos;s power infrastructure development 
                   by providing high-quality civil construction services for electrical substations. Today, 
-                  we are proud to have completed numerous projects across various voltage levels, from 
-                  33 kV to 440 kV, serving utilities and industrial clients nationwide.
+                  we are proud to have successfully executed numerous complex projects across various voltage levels, from 
+                  33 kV to 440 kV, serving major utilities and industrial clients nationwide.
                 </p>
                 <p>
-                  What sets us apart is our dedication to quality, safety, and timely project delivery. 
+                  What sets us apart is our dedication to quality, safety, and rigorous execution. 
                   We combine technical expertise with modern construction methodologies to ensure that 
-                  every project meets the highest standards of excellence.
+                  every foundation, powerhouse, and substation meets the absolute highest standards of endurance.
                 </p>
               </div>
             </motion.div>
             
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="bg-gradient-to-br from-orange-100 to-orange-50 rounded-3xl p-8 md:p-12"
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative overflow-hidden bg-[#071320] text-white rounded-[36px] p-8 sm:p-12 lg:p-16 shadow-[0_24px_90px_rgba(7,19,32,0.22)] border border-white/10 flex flex-col justify-center"
             >
-              <div className="space-y-8">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(56,189,248,0.20),transparent_32%),radial-gradient(circle_at_22%_80%,rgba(249,115,22,0.18),transparent_30%)]" />
+              <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:42px_42px]" />
+              
+              <div className="relative z-10 grid grid-cols-2 gap-8 lg:gap-12">
                 <div>
-                  <div className="text-4xl md:text-5xl font-bold text-orange-600 mb-2">15+</div>
-                  <div className="text-gray-700 font-medium">Years of Experience</div>
+                  <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">15<span className="text-orange-400">+</span></div>
+                  <div className="text-slate-300 font-medium text-sm tracking-wide uppercase" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Years of Experience</div>
                 </div>
                 <div>
-                  <div className="text-4xl md:text-5xl font-bold text-orange-600 mb-2">200+</div>
-                  <div className="text-gray-700 font-medium">Projects Completed</div>
+                  <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">200<span className="text-orange-400">+</span></div>
+                  <div className="text-slate-300 font-medium text-sm tracking-wide uppercase" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Projects Completed</div>
                 </div>
                 <div>
-                  <div className="text-4xl md:text-5xl font-bold text-orange-600 mb-2">98%</div>
-                  <div className="text-gray-700 font-medium">Client Satisfaction</div>
+                  <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">98<span className="text-orange-400">%</span></div>
+                  <div className="text-slate-300 font-medium text-sm tracking-wide uppercase" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Client Satisfaction</div>
                 </div>
                 <div>
-                  <div className="text-4xl md:text-5xl font-bold text-orange-600 mb-2">500+</div>
-                  <div className="text-gray-700 font-medium">Skilled Professionals</div>
+                  <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">500<span className="text-orange-400">+</span></div>
+                  <div className="text-slate-300 font-medium text-sm tracking-wide uppercase" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Skilled Professionals</div>
                 </div>
               </div>
             </motion.div>
@@ -101,70 +114,71 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="bg-gray-50 py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="bg-white rounded-3xl p-8 md:p-10 shadow-lg"
-            >
-              <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Our Mission</h3>
-              <p className="text-gray-700 leading-relaxed">
-                To deliver exceptional civil construction services for electrical substations that 
-                meet the highest standards of quality, safety, and reliability. We are committed to 
-                powering India&apos;s infrastructure growth by building robust foundations for the nation&apos;s 
-                energy transmission network, while maintaining environmental sustainability and 
-                fostering long-term partnerships with our clients.
-              </p>
-            </motion.div>
+      <section className="py-8 px-4 sm:px-8">
+        <div className="max-w-[1780px] mx-auto grid md:grid-cols-2 gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-white rounded-[36px] p-8 sm:p-12 shadow-[0_12px_40px_rgba(15,23,42,0.04)] border border-slate-100"
+          >
+            <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center mb-8 border border-orange-100">
+              <svg className="w-8 h-8 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-slate-950 mb-6">Our Mission</h3>
+            <p className="text-slate-600 leading-relaxed text-base sm:text-lg" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>
+              To deliver exceptional civil construction services for electrical substations that 
+              meet the highest standards of quality, safety, and reliability. We are committed to 
+              powering India&apos;s infrastructure growth by building robust foundations for the nation&apos;s 
+              energy transmission network, while maintaining environmental sustainability and 
+              fostering long-term partnerships with our clients.
+            </p>
+          </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-white rounded-3xl p-8 md:p-10 shadow-lg"
-            >
-              <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Our Vision</h3>
-              <p className="text-gray-700 leading-relaxed">
-                To be the most trusted and preferred partner for electrical substation civil 
-                construction in India and beyond. We envision becoming a benchmark for quality, 
-                innovation, and sustainable construction practices in the power sector, contributing 
-                significantly to the development of resilient and future-ready energy infrastructure 
-                that supports economic growth and improves lives.
-              </p>
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-white rounded-[36px] p-8 sm:p-12 shadow-[0_12px_40px_rgba(15,23,42,0.04)] border border-slate-100"
+          >
+            <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center mb-8 border border-orange-100">
+              <svg className="w-8 h-8 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+            </div>
+            <h3 className="text-2xl md:text-3xl font-bold text-slate-950 mb-6">Our Vision</h3>
+            <p className="text-slate-600 leading-relaxed text-base sm:text-lg" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>
+              To be the most trusted and preferred partner for electrical substation civil 
+              construction in India and beyond. We envision becoming a benchmark for quality, 
+              innovation, and sustainable construction practices in the power sector, contributing 
+              significantly to the development of resilient and future-ready energy infrastructure 
+              that supports economic growth and improves lives.
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* Core Values */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-16 px-4 sm:px-8">
+        <div className="max-w-[1780px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Core Values</h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              The principles that guide everything we do
+            <div className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-2 text-xs uppercase tracking-[0.18em] text-orange-600 mb-6">
+              Principles
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-950 mb-4">Our Core Values</h2>
+            <p className="text-slate-600 text-lg max-w-2xl" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>
+              The principles that guide everything we do in the field and in the office.
             </p>
           </motion.div>
 
@@ -213,15 +227,15 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-gray-50 rounded-2xl p-6 hover:bg-gradient-to-br hover:from-orange-500 hover:to-orange-600 hover:text-white transition-all duration-300 group"
+                className="bg-white rounded-[28px] p-8 border border-slate-100 shadow-[0_4px_20px_rgba(15,23,42,0.03)] hover:shadow-[0_12px_40px_rgba(15,23,42,0.08)] hover:-translate-y-1 transition-all duration-300 group"
               >
-                <div className="text-orange-500 group-hover:text-white mb-4">
+                <div className="w-14 h-14 rounded-2xl bg-slate-50 text-slate-400 group-hover:bg-orange-50 group-hover:text-orange-500 flex items-center justify-center mb-6 transition-colors duration-300">
                   {value.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-white">
+                <h3 className="text-xl font-bold mb-4 text-slate-950">
                   {value.title}
                 </h3>
-                <p className="text-gray-600 group-hover:text-white/90 text-sm leading-relaxed">
+                <p className="text-slate-600 text-sm leading-relaxed" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>
                   {value.description}
                 </p>
               </motion.div>
@@ -230,133 +244,81 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="bg-gray-900 text-white py-16 px-4">
-        <div className="max-w-7xl mx-auto">
+      {/* Why Choose Us & Our Team */}
+      <section className="py-8 px-4 sm:px-8">
+        <div className="max-w-[1780px] mx-auto grid lg:grid-cols-[1fr_1fr] gap-8">
+          
+          {/* Why Choose Us */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="bg-[#06111f] text-white rounded-[36px] p-8 sm:p-12 shadow-[0_24px_90px_rgba(6,17,31,0.22)] relative overflow-hidden"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose NRK</h2>
-            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-              What makes us the preferred partner for substation construction
-            </p>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(56,189,248,0.12),transparent_32%),radial-gradient(circle_at_22%_80%,rgba(249,115,22,0.12),transparent_30%)]" />
+            
+            <div className="relative z-10">
+              <h2 className="text-3xl md:text-4xl font-bold mb-8">Why Choose NRK</h2>
+              <div className="grid sm:grid-cols-2 gap-8">
+                {[
+                  { title: "Proven Track Record", desc: "Successfully completed 200+ projects across India." },
+                  { title: "Technical Expertise", desc: "Deep domain knowledge for complex engineering tasks." },
+                  { title: "Quality Assurance", desc: "Stringent quality control adhering to international standards." },
+                  { title: "Timely Delivery", desc: "Strong project management ensuring on-time completion." }
+                ].map((item, index) => (
+                  <div key={index} className="border-l-2 border-orange-500/50 pl-5">
+                    <h3 className="text-lg font-bold mb-2 text-white/90">{item.title}</h3>
+                    <p className="text-slate-400 text-sm leading-relaxed" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Proven Track Record",
-                description: "Successfully completed 200+ projects across India, establishing us as a reliable partner in the power infrastructure sector."
-              },
-              {
-                title: "Technical Expertise",
-                description: "Our team of experienced engineers and construction professionals brings deep domain knowledge to every project."
-              },
-              {
-                title: "Quality Assurance",
-                description: "Stringent quality control processes and adherence to international standards ensure superior project outcomes."
-              },
-              {
-                title: "Timely Delivery",
-                description: "Strong project management capabilities and efficient execution ensure on-time project completion."
-              },
-              {
-                title: "Safety Culture",
-                description: "Zero-compromise approach to safety with comprehensive training programs and strict safety protocols."
-              },
-              {
-                title: "Client Partnership",
-                description: "Building long-term relationships through transparent communication, reliability, and exceptional service."
-              }
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="border-l-4 border-orange-500 pl-6"
-              >
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-gray-300 leading-relaxed">{item.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Our Team Section */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
+          {/* Our Team Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-white rounded-[36px] p-8 sm:p-12 shadow-[0_12px_40px_rgba(15,23,42,0.04)] border border-slate-100"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Strength</h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              A team of dedicated professionals committed to excellence
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-950 mb-8">Our Strength</h2>
+            <div className="grid gap-6">
+              {[
+                { title: "Engineering Team", count: "50+", desc: "Experienced civil and structural engineers with expertise in power infrastructure" },
+                { title: "Project Managers", count: "30+", desc: "Certified professionals ensuring seamless project execution" },
+                { title: "Skilled Workforce", count: "500+", desc: "Trained technicians and construction workers committed to quality" }
+              ].map((team, index) => (
+                <div key={index} className="flex items-center gap-6 p-5 rounded-2xl bg-slate-50/50 border border-slate-100">
+                  <div className="text-3xl sm:text-4xl font-bold text-orange-500 min-w-[80px]">{team.count}</div>
+                  <div>
+                    <h3 className="text-lg font-bold text-slate-950 mb-1">{team.title}</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>{team.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {[
-              {
-                title: "Engineering Team",
-                count: "50+",
-                description: "Experienced civil and structural engineers with expertise in power infrastructure"
-              },
-              {
-                title: "Project Managers",
-                count: "30+",
-                description: "Certified professionals ensuring seamless project execution and timely delivery"
-              },
-              {
-                title: "Skilled Workforce",
-                count: "500+",
-                description: "Trained technicians and construction workers committed to quality and safety"
-              }
-            ].map((team, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center bg-gradient-to-br from-orange-50 to-white rounded-3xl p-8 shadow-lg"
-              >
-                <div className="text-5xl font-bold text-orange-600 mb-2">{team.count}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{team.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{team.description}</p>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
       {/* Certifications & Compliance */}
-      <section className="bg-gray-50 py-16 px-4">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-16 px-4 sm:px-8">
+        <div className="max-w-[1780px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="mb-10 text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Certifications & Compliance</h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Committed to maintaining the highest industry standards
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-950 mb-4">Certifications & Compliance</h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {[
               "ISO 9001:2015 Certified",
               "ISO 14001:2015 Environmental",
@@ -369,14 +331,14 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-6 text-center shadow-md"
+                className="bg-white rounded-[24px] p-6 text-center border border-slate-100 shadow-[0_4px_20px_rgba(15,23,42,0.02)]"
               >
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-orange-100">
+                  <svg className="w-6 h-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                   </svg>
                 </div>
-                <h3 className="font-bold text-gray-900">{cert}</h3>
+                <h3 className="font-bold text-slate-900 text-sm sm:text-base">{cert}</h3>
               </motion.div>
             ))}
           </div>
@@ -384,20 +346,33 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-br from-orange-500 to-orange-600 text-white py-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Work Together?</h2>
-          <p className="text-xl text-white/90 mb-8">
-            Partner with us for your next substation construction project
-          </p>
-          <button
-            onClick={handleContactClick}
-            className="inline-block bg-white text-orange-600 hover:bg-gray-100 font-semibold px-8 py-4 rounded-full transition-colors cursor-pointer"
+      <section className="py-8 px-4 sm:px-8">
+        <div className="max-w-[1780px] mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="bg-[#071320] text-white rounded-[36px] py-16 px-8 text-center relative overflow-hidden shadow-[0_24px_90px_rgba(7,19,32,0.22)]"
           >
-            Get in Touch
-          </button>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(249,115,22,0.15),transparent_60%)]" />
+            <div className="relative z-10 max-w-3xl mx-auto">
+              <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">Ready to Work Together?</h2>
+              <p className="text-lg md:text-xl text-slate-300 mb-10" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>
+                Partner with us for your next substation construction project. Let&apos;s build the future, together.
+              </p>
+              <button
+                onClick={handleContactClick}
+                className="inline-flex items-center gap-2 bg-white text-slate-950 px-8 py-4 rounded-full font-bold text-sm hover:bg-orange-50 hover:text-orange-600 transition-colors shadow-[0_14px_35px_rgba(255,255,255,0.18)]"
+              >
+                Get in Touch
+                <ArrowUpRight className="w-4 h-4" />
+              </button>
+            </div>
+          </motion.div>
         </div>
       </section>
+      
     </div>
   )
 }
