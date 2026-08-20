@@ -1,0 +1,38 @@
+{
+  "planHash": "314f380765dfe3643762869c7781b8eb87eab9913fe891efad036a89616b056a",
+  "phase": "baseline",
+  "recordedAtUtc": "2026-08-20T17:07:16.5359178Z",
+  "retryCount": 0,
+  "resetBaseline": false,
+  "result": {
+    "setupSucceeded": true,
+    "setupDurationMs": 5163,
+    "setupFailureOutput": null,
+    "assertions": [
+      {
+        "name": "tsc-no-emit",
+        "kind": "process",
+        "verificationMethod": "exit-code",
+        "passed": true,
+        "timedOut": false,
+        "skipped": false,
+        "skippedReason": null,
+        "exitCode": 0,
+        "outputSample": "",
+        "durationMs": 6549
+      },
+      {
+        "name": "dev-server-serves-home",
+        "kind": "http-probe",
+        "verificationMethod": "http-status",
+        "passed": true,
+        "timedOut": false,
+        "skipped": false,
+        "skippedReason": null,
+        "exitCode": null,
+        "outputSample": "HTTP 200\n\u003C!DOCTYPE html\u003E\u003Chtml lang=\u0022en\u0022\u003E\u003Chead\u003E\u003Cmeta charSet=\u0022utf-8\u0022/\u003E\u003Cmeta name=\u0022viewport\u0022 content=\u0022width=device-width, initial-scale=1\u0022/\u003E\u003Clink rel=\u0022preload\u0022 as=\u0022image\u0022 imageSrcSet=\u0022/_next/image?url=%2Fbuildings.jpg\u0026amp;w=640\u0026amp;q=75 640w, /_next/image?url=%2Fbuildings.jpg\u0026amp;w=750\u0026amp;q=75 750w, /_next/image?url=%2Fbuildings.jpg\u0026amp;w=828\u0026amp;q=75 828w, /_next/image?url=%2Fbuildings.jpg\u0026amp;w=1080\u0026amp;q=75 1080w, /_next/image?url=%2Fbuildings.jpg\u0026amp;w=1200\u0026amp;q=75 1200w, /_next/image?url=%2Fbuildings.jpg\u0026amp;w=1920\u0026amp;q=75 1920w, /_next/image?url=%2Fbuildings.jpg\u0026amp;w=2048\u0026amp;q=75 2048w, /_next/image?url=%2Fbuildings.jpg\u0026amp;w=3840\u0026amp;q=75 3840w\u0022 imageSizes=\u0022100vw\u0022/\u003E\u003Clink rel=\u0022stylesheet\u0022 href=\u0022/_next/static/chunks/%5Broot-of-the-server%5D__0f0ba101._.css\u0022 data-precedence=\u0022next_static/chunks/[root-of-the-server]__0f0ba101._.css\u0022/\u003E\u003Clink rel=\u0022stylesheet\u0022 href=\u0022/_next/static/chunks/src_components_home_components_home-cmp_CursorGrid_7e1b5a08.css\u0022 data-precedence=\u0022next_static/chunks/src_components_home_components_home-cmp_CursorGrid_7e1b5a08.css\u0022/\u003E\u003Clink rel=\u0022preload\u0022 as=\u0022script\u0022 fetchPriority=\u0022low\u0022 href=\u0022/_next/static/chunks/%5Bturbopack%5D_browser_dev_hmr-client_hmr-client_ts_57d40746._.js\u0022/\u003E\u003Cscript src=\u0022/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js\u0022 async=\u0022\u0022\u003E\u003C/script\u003E\u003Cscript src=\u0022/_next/static/chunks/node_modules_next_dist_compiled_next-devtools_index_a9cb0712.js\u0022 async=\u0022\u0022\u003E\u003C/script\u003E\u003Cscript src=\u0022/_next/static/chunks/node_modules_next_dist_compiled_5150ccfd._.js\u0022 async=\u0022\u0022\u003E\u003C/script\u003E\u003Cscript src=\u0022/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js\u0022 async=\u0022\u0022\u003E\u003C/script\u003E\u003Cscript src=\u0022/_next/static/chunks/node_modules_next_dist_b0daae9a._.js\u0022 async=\u0022\u0022\u003E\u003C/script\u003E\u003Cscript src=\u0022/_next/static/chunks/node_modules_%40swc_helpers_cjs_b3dc30d6._.js\u0022 async=\u0022\u0022\u003E\u003C/script\u003E\u003Cscript src=\u0022/_next/static/chunks/_a0ff3932._.js\u0022 async=\u0022\u0022\u003E\u003C/script\u003E\u003Cscript src=\u0022/_next/static/chunks/turbopack-_cdba956c._.js\u0022 async=\u0022\u0022\u003E\u003C/script\u003E\u003Cscript src=\u0022/_next/static/chunks/node_modules_next_dist_8db7fb1f._.js\u0022 async=\u0022\u0022\u003E\u003C/script\u003E\u003Cscript src=\u0022/_next/static/chunks/src_app_favicon_ico_mjs_243aa161._.js\u0022 async=\u0022\u0022\u003E\u003C/script\u003E\u003Cscript src=\u0022/_next/static/chunks/node_modules_e74fd612._.js\u0022 async=\u0022\u0022\u003E\u003C/script\u003E\u003Cscript src=\u0022/_next/static/chunks/src_components_main_components_Navbar_tsx_1a9974b7._.js\u0022 async=\u0022\u0022\u003E\u003C/script\u003E\u003Cscript src=\u0022/_next/static/chunks/src_app_layout_tsx_0a548d63._.js\u0022 async=\u0022\u0022\u003E\u003C/script\u003E\u003Cscript src=\u0022/_next/static/chunks/src_components_home_components_a172a188._.js\u0022 async=\u0022\u0022\u003E\u003C/script\u003E\u003Cscript src=\u0022/_next/static/chunks/node_modules_cc0fdc80._.js\u0022 async=\u0022\u0022\u003E\u003C/script\u003E\u003Cscript src=\u0022/_next/static/chunks/src_app_page_tsx_57399dc1._.js\u0022 async=\u0022\u0022\u003E\u003C/script\u003E\u003Cscript src=\u0022/_next/static/chunks/node_modules_next_dist_client_components_builtin_global-error_57399dc1.js\u0022 async=\u0022\u0022\u003E\u003C/script\u003E\u003Cmeta name=\u0022next-size-adjust\u0022 content=\u0022\u0022/\u003E\u003Ctitle\u003ECreate Next App\u003C/title\u003E\u003Cmeta name=\u0022description\u0022 content=\u0022Generated by create next app\u0022/\u003E\u003Clink rel=\u0022icon\u0022 href=\u0022/favicon.ico?favicon.3eeffb32.ico\u0022 sizes=\u0022716x716\u0022 type=\u0022image/x-icon\u0022/\u003E\u003Cscript src=\u0022/_next/static/chunks/node_modules_next_dist_build_polyfills_polyfill-nomodule.js\u0022 noModule=\u0022\u0022\u003E\u003C/script\u003E\u003C/head\u003E\u003Cbody class=\u0022geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable antialiased\u0022\u003E\u003Cdiv hidden=\u0022\u0022\u003E\u003C!--$--\u003E\u003C!--/$--\u003E\u003C/div\u003E\u003Cnav class=\u0022w-full flex items-center justify-between px-4 md:px-8 py-3    bg-white/80 backdrop-blur-md fixed top-0 left-0 z-50 shadow-[0_4px_30px_rgba(15,23,42,0.08)] border-b border-white/70 transition-all duration-300\u0022\u003E\u003Ca class=\u0022flex items-center space-x-3 group\u0022 href=\u0022/\u0022\u003E\u003Cimg alt=\u0022Logo\u0022 loading=\u0022lazy\u0022 width=\u002256\u0022 height=\u002256\u0022 decoding=\u0022async\u0022 data-nimg=\u00221\u0022 class=\u0022h-10 w-10 sm:h-12 sm:w-12 transition-transform group-hover:scale-105\u0022 style=\u0022color:transparent\u0022 srcSet=\u0022/_next/image?url=%2Fnrk_logo.png\u0026amp;w=64\u0026amp;q=75 1x, /_next/image?url=%2Fnrk_logo.png\u0026amp;w=128\u0026amp;q=75 2x\u0022 src=\u0022/_next/image?url=%2Fnrk_logo.png\u0026amp;w=128\u0026amp;q=75\u0022/\u003E\u003Cspan class=\u0022hidden sm:block text-slate-950 font-bold text-lg tracking-tight\u0022 style=\u0022font-family:PlusJakartaSans-Bold, sans-serif\u0022\u003ENR\n\u2026[truncated]",
+        "durationMs": 700
+      }
+    ]
+  }
+}
