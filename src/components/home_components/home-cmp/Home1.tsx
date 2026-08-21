@@ -44,18 +44,10 @@ function Home1() {
   }
 
   const stats = [
-    ['38+', 'Major Projects'],
+    ['38+', 'Projects'],
     ['15+', 'Years Experience'],
     ['2', 'Ongoing Projects'],
   ]
-
-  const capabilities = [
-    { label: 'Powerhouses', icon: Factory },
-    { label: 'Residential Buildings', icon: Building2 },
-    { label: 'RCC Roads', icon: Route },
-    { label: 'AIS / GIS / GSS', icon: Zap },
-  ]
-
   return (
     <section
       className="relative min-h-screen overflow-hidden bg-[#f3f6f8] px-3 pb-5 pt-20 sm:px-5 sm:pb-6 sm:pt-24 lg:px-8 lg:pb-8"
@@ -160,25 +152,6 @@ function Home1() {
                 </motion.a>
               </motion.div>
             </div>
-
-            <motion.div
-              className="grid grid-cols-2 gap-3 lg:grid-cols-1 xl:grid-cols-2"
-              variants={itemVariants}
-            >
-              {capabilities.map(({ label, icon: Icon }) => (
-                <motion.div
-                  key={label}
-                  className="group flex min-h-18 items-center gap-3 rounded-2xl border border-white/12 bg-white/10 p-3 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.10)] backdrop-blur-xl sm:min-h-20 sm:gap-4 sm:p-4"
-                  whileHover={{ y: -4, backgroundColor: 'rgba(255,255,255,0.14)' }}
-                  transition={{ type: 'spring', stiffness: 260, damping: 22 }}
-                >
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-orange-400/14 text-orange-300 ring-1 ring-orange-300/20 transition-colors group-hover:bg-orange-400/22 sm:h-11 sm:w-11">
-                    <Icon className="h-5 w-5" />
-                  </span>
-                  <span className="text-xs leading-5 text-white/86 sm:text-sm">{label}</span>
-                </motion.div>
-              ))}
-            </motion.div>
           </div>
 
           <motion.div

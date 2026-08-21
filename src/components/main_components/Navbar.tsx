@@ -174,7 +174,7 @@ function Navbar() {
               >
                 Projects
               </Link>
-              <a 
+              {/* <a 
                 href="#" 
                 className="px-4 py-3 rounded-xl text-slate-700 hover:bg-orange-50 hover:text-orange-600 transition-colors font-medium"
                 onClick={toggleMenu}
@@ -187,7 +187,7 @@ function Navbar() {
                 onClick={toggleMenu}
               >
                 Blog
-              </a>
+              </a> */}
               
               {/* Mobile Contact Button */}
               <div className="pt-6 mt-2 border-t border-slate-100">

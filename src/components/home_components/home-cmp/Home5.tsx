@@ -24,7 +24,7 @@ function Home5() {
       title: 'Specialized in power infrastructure',
       content: {
         title: 'Complete substation solutions',
-        description: 'We specialize in AIS, GIS, and GSS substations from 33 kV to 440 kV, delivering reliable construction for demanding electrical infrastructure requirements.',
+        description: 'We specialize in AIS, GIS, and GSS substations from 33 kV to 400 kV, delivering reliable construction for demanding electrical infrastructure requirements.',
       },
     },
     {

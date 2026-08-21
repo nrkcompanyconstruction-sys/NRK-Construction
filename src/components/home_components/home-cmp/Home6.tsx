@@ -186,25 +186,8 @@ function Home6() {
               }}
             >
               {testimonials.map((testimonial, index) => (
-                <div key={testimonial.id} className="w-full min-w-full flex-shrink-0">
-                  <div className="grid gap-5 lg:grid-cols-[0.92fr_1.08fr]">
-                    <div className="relative min-h-[320px] overflow-hidden rounded-[28px] bg-slate-900">
-                      <Image
-                        src={testimonial.projectImage}
-                        alt={testimonial.projectType}
-                        fill
-                        className="object-cover opacity-72"
-                        priority={index === 0}
-                      />
-                      <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(7,19,32,0.88),rgba(7,19,32,0.18))]" />
-                      <div className="absolute inset-x-5 bottom-5 rounded-2xl border border-white/12 bg-white/10 p-4 text-white backdrop-blur-md">
-                        <div className="text-xs uppercase tracking-[0.16em] text-orange-200">{testimonial.projectType}</div>
-                        <div className="mt-2 text-sm text-slate-200" style={{ fontFamily: 'Inter-24pt-Medium, sans-serif' }}>
-                          {String(index + 1).padStart(2, '0')} / {String(testimonials.length).padStart(2, '0')}
-                        </div>
-                      </div>
-                    </div>
-
+                <div key={testimonial.id} className="w-full min-w-full flex-shrink-0 px-3 sm:px-4">
+                  <div className="block">
                     <div className="relative overflow-hidden rounded-[28px] bg-[#071320] p-6 text-white sm:p-8 lg:p-10">
                       <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(56,189,248,0.18),transparent_30%),radial-gradient(circle_at_18%_80%,rgba(249,115,22,0.18),transparent_30%)]" />
                       <div className="relative">

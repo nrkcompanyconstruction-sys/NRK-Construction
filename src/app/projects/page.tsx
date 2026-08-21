@@ -85,6 +85,56 @@ const projects: Project[] = [
     completionDate: "Ongoing",
     status: "ongoing",
     scale: "large"
+  },
+  {
+    name: "400 KV Substation Bay Extension",
+    client: "Lumino Industries Ltd.",
+    location: "Dhanonda, Rewari Haryana",
+    scopeOfWork: "400 KV Substation Bay Extension Civil Work",
+    startDate: "Ongoing",
+    completionDate: "Ongoing",
+    status: "ongoing",
+    scale: "large"
+  },
+  {
+    name: "220/132/33 KV GIS Substation",
+    client: "Sumaja Electroinfra Pvt Ltd",
+    location: "Rohtak, Haryana",
+    scopeOfWork: "220/132/33 KV GIS Substation Civil Work",
+    startDate: "Ongoing",
+    completionDate: "Ongoing",
+    status: "ongoing",
+    scale: "large"
+  },
+  {
+    name: "220/132/33 KV Substation",
+    client: "MANGAL Electrical Industries Pvt Ltd",
+    location: "Dataganj, UP",
+    scopeOfWork: "Civil work at 220/132/33 KV substation in partnership",
+    startDate: "Completed",
+    completionDate: "Completed",
+    status: "completed",
+    scale: "large"
+  },
+  {
+    name: "132/33 KV Substation",
+    client: "M/S KPM Infrastructure Pvt Ltd JV Swaran Power Infrastructure Pvt Ltd",
+    location: "Eranch, UP",
+    scopeOfWork: "Construction of 132/33 KV Substation in partnership",
+    startDate: "Completed",
+    completionDate: "Completed",
+    status: "completed",
+    scale: "medium"
+  },
+  {
+    name: "220/33 KV Substation",
+    client: "Bhanwariya Infra Projects Private Limited",
+    location: "Moth, UP",
+    scopeOfWork: "Construction of 220/33 KV Substation in partnership",
+    startDate: "Completed",
+    completionDate: "Completed",
+    status: "completed",
+    scale: "large"
   }
 ];
 
@@ -145,24 +195,33 @@ function ProjectsPage() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
             className="bg-white rounded-[28px] p-8 text-center border border-slate-100 shadow-[0_4px_20px_rgba(15,23,42,0.03)]"
           >
-            <div className="text-4xl md:text-5xl font-bold text-slate-950 mb-2">{projects.length}</div>
+            <div className="text-4xl md:text-5xl font-bold text-slate-950 mb-2">38+</div>
             <div className="text-slate-500 font-medium text-sm tracking-wide uppercase" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Total Projects</div>
           </motion.div>
           <motion.div 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
             className="bg-white rounded-[28px] p-8 text-center border border-slate-100 shadow-[0_4px_20px_rgba(15,23,42,0.03)]"
           >
-            <div className="text-4xl md:text-5xl font-bold text-green-500 mb-2">{projects.filter(p => p.status === "completed").length}</div>
+            <div className="text-4xl md:text-5xl font-bold text-green-500 mb-2">34+</div>
             <div className="text-slate-500 font-medium text-sm tracking-wide uppercase" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Completed</div>
           </motion.div>
           <motion.div 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }}
             className="bg-white rounded-[28px] p-8 text-center border border-slate-100 shadow-[0_4px_20px_rgba(15,23,42,0.03)]"
           >
-            <div className="text-4xl md:text-5xl font-bold text-orange-500 mb-2">{projects.filter(p => p.status === "ongoing").length}</div>
+            <div className="text-4xl md:text-5xl font-bold text-orange-500 mb-2">4</div>
             <div className="text-slate-500 font-medium text-sm tracking-wide uppercase" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Ongoing</div>
           </motion.div>
         </div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-center mb-10"
+        >
+          <p className="text-lg md:text-xl text-slate-600 font-medium" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>
+            Total projects are 38+, and some of our major projects are detailed below.
+          </p>
+        </motion.div>
 
         {/* Filter Buttons */}
         <div className="flex justify-center gap-4 mb-12 flex-wrap" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>

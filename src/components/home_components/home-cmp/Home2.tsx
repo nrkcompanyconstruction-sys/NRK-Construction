@@ -104,7 +104,7 @@ function Home2() {
             <div>
               <div className="text-xs uppercase tracking-[0.2em] text-sky-200/70">Execution range</div>
               <p className="mt-5 text-2xl leading-tight text-white sm:text-3xl lg:text-4xl">
-                Nearly 20 years of team experience across 33 kV to 440 kV substation projects.
+                Nearly 20 years of team experience across 33 kV to 400 kV substation projects.
               </p>
             </div>
 
@@ -127,7 +127,7 @@ function Home2() {
           <div className="relative mt-8 grid grid-cols-3 gap-3 border-t border-white/10 pt-5">
             {[
               ['38+', 'Projects'],
-              ['440 kV', 'Capacity'],
+              ['400 kV', 'Capacity'],
               ['20 yrs', 'Team exp.'],
             ].map(([value, label]) => (
               <div key={label} className="rounded-2xl bg-white/[0.07] px-4 py-4 ring-1 ring-white/10">

@@ -70,7 +70,7 @@ export default function AboutPage() {
                   Our journey began with a vision to contribute to India&apos;s power infrastructure development 
                   by providing high-quality civil construction services for electrical substations. Today, 
                   we are proud to have successfully executed numerous complex projects across various voltage levels, from 
-                  33 kV to 440 kV, serving major utilities and industrial clients nationwide.
+                  33 kV to 400 kV, serving major utilities and industrial clients nationwide.
                 </p>
                 <p>
                   What sets us apart is our dedication to quality, safety, and rigorous execution. 
@@ -96,7 +96,7 @@ export default function AboutPage() {
                   <div className="text-slate-300 font-medium text-sm tracking-wide uppercase" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Years of Experience</div>
                 </div>
                 <div>
-                  <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">200<span className="text-orange-400">+</span></div>
+                  <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">31<span className="text-orange-400">+</span></div>
                   <div className="text-slate-300 font-medium text-sm tracking-wide uppercase" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Projects Completed</div>
                 </div>
                 <div>

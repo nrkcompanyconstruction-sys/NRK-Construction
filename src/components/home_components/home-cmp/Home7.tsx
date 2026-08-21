@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { ArrowUpRight, Building2, Mail, Phone, Route, Zap } from 'lucide-react'
+import { ArrowUpRight, Building2, Mail, Phone, Route, Zap, CheckCircle2, AlertCircle } from 'lucide-react'
 import { motion, type Variants } from 'framer-motion'
 import CursorGrid from './CursorGrid'
 
@@ -12,6 +12,9 @@ function Home7() {
     phone: '',
     message: '',
   })
+  
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -21,9 +24,41 @@ function Home7() {
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
+    
+    if (!formData.name || !formData.email || !formData.message) {
+      setStatus('error')
+      setErrorMessage('Please fill in all required fields.')
+      return
+    }
+
+    setStatus('loading')
+    setErrorMessage('')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setStatus('success')
+        setFormData({ name: '', email: '', phone: '', message: '' })
+        // Reset success message after 5 seconds
+        setTimeout(() => setStatus('idle'), 5000)
+      } else {
+        const data = await response.json()
+        setStatus('error')
+        setErrorMessage(data.error || 'Something went wrong. Please try again.')
+      }
+    } catch (error) {
+      setStatus('error')
+      setErrorMessage('Failed to connect to the server. Please try again later.')
+    }
   }
 
   const containerVariants: Variants = {
@@ -55,7 +90,7 @@ function Home7() {
     { icon: Route, label: 'RCC roads' },
   ]
 
-  const inputClass = 'w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-sm text-slate-950 outline-none transition-colors placeholder:text-slate-400 focus:border-orange-400 focus:ring-4 focus:ring-orange-100'
+  const inputClass = 'w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-sm text-slate-950 outline-none transition-colors placeholder:text-slate-400 focus:border-orange-400 focus:ring-4 focus:ring-orange-100 disabled:opacity-50 disabled:bg-slate-50'
 
   return (
     <section id="contact-form" className="relative overflow-hidden bg-white px-3 py-12 sm:px-5 sm:py-16 lg:px-8 lg:py-20">
@@ -109,18 +144,6 @@ function Home7() {
                 </div>
               ))}
             </div>
-
-            <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.07] p-5 backdrop-blur-md">
-              <div className="flex items-center gap-3">
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-orange-400/14 text-orange-300 ring-1 ring-orange-300/20">
-                  <Phone className="h-5 w-5" />
-                </span>
-                <div>
-                  <div className="text-xs uppercase tracking-[0.16em] text-slate-400">Response focus</div>
-                  <div className="mt-1 text-sm text-slate-200">Consultation, estimate, and technical scope discussion</div>
-                </div>
-              </div>
-            </div>
           </motion.div>
 
           <motion.div
@@ -131,7 +154,7 @@ function Home7() {
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
                   <label htmlFor="name" className="mb-2 block text-sm font-bold text-slate-700">
-                    Name
+                    Name *
                   </label>
                   <input
                     type="text"
@@ -141,6 +164,8 @@ function Home7() {
                     onChange={handleInputChange}
                     placeholder="Michael Carter"
                     className={inputClass}
+                    required
+                    disabled={status === 'loading'}
                   />
                 </div>
 
@@ -156,13 +181,14 @@ function Home7() {
                     onChange={handleInputChange}
                     placeholder="+91 98765 43210"
                     className={inputClass}
+                    disabled={status === 'loading'}
                   />
                 </div>
               </div>
 
               <div>
                 <label htmlFor="email" className="mb-2 block text-sm font-bold text-slate-700">
-                  Email
+                  Email *
                 </label>
                 <input
                   type="email"
@@ -172,12 +198,14 @@ function Home7() {
                   onChange={handleInputChange}
                   placeholder="michael@example.com"
                   className={inputClass}
+                  required
+                  disabled={status === 'loading'}
                 />
               </div>
 
               <div>
                 <label htmlFor="message" className="mb-2 block text-sm font-bold text-slate-700">
-                  Project details
+                  Project details *
                 </label>
                 <textarea
                   id="message"
@@ -187,15 +215,44 @@ function Home7() {
                   onChange={handleInputChange}
                   placeholder="Tell us about location, voltage level, scope, timeline, and construction requirements..."
                   className={`${inputClass} resize-none`}
+                  required
+                  disabled={status === 'loading'}
                 />
               </div>
 
+              {status === 'error' && (
+                <div className="flex items-center gap-2 text-red-600 text-sm font-medium bg-red-50 p-4 rounded-xl border border-red-100">
+                  <AlertCircle className="w-5 h-5" />
+                  {errorMessage}
+                </div>
+              )}
+
+              {status === 'success' && (
+                <div className="flex items-center gap-2 text-green-600 text-sm font-medium bg-green-50 p-4 rounded-xl border border-green-100">
+                  <CheckCircle2 className="w-5 h-5" />
+                  Thank you! Your project enquiry has been sent successfully. We will get back to you shortly.
+                </div>
+              )}
+
               <button
                 type="submit"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-950 px-6 py-4 text-base font-bold text-white transition-colors hover:bg-orange-500"
+                disabled={status === 'loading'}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-950 px-6 py-4 text-base font-bold text-white transition-colors hover:bg-orange-500 disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Submit project enquiry
-                <ArrowUpRight className="h-4 w-4" />
+                {status === 'loading' ? (
+                  <span className="flex items-center gap-2">
+                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Sending Enquiry...
+                  </span>
+                ) : (
+                  <>
+                    Submit project enquiry
+                    <ArrowUpRight className="h-4 w-4" />
+                  </>
+                )}
               </button>
             </form>
           </motion.div>

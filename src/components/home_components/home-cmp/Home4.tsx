@@ -10,7 +10,7 @@ function Home4() {
   const projects = [
     {
       id: 1,
-      name: '440 kV Substation',
+      name: '400 kV Substation',
       type: 'AIS Substation',
       description: 'Complete civil construction for a high-voltage AIS substation with advanced equipment foundations and site infrastructure.',
       icon: Zap,

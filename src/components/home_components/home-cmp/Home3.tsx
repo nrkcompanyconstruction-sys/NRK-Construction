@@ -36,8 +36,8 @@ function Home3() {
       label: 'High Voltage',
       title: 'AIS, GIS & GSS Substations',
       href: '/services/ais-gis-gss',
-      description: 'Complete civil construction works for substations from 33 kV to 440 kV, built for reliability, clear coordination, and long operating life.',
-      specs: ['33 kV - 440 kV', 'AIS / GIS / GSS', 'Power-grid civil works'],
+      description: 'Complete civil construction works for substations from 33 kV to 400 kV, built for reliability, clear coordination, and long operating life.',
+      specs: ['33 kV - 400 kV', 'AIS / GIS / GSS', 'Power-grid civil works'],
     },
     {
       icon: Layers3,

@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Youtube, Instagram, Twitter } from "lucide-react";
+import { Linkedin } from "lucide-react";
 
 function Footer() {
   return (
@@ -37,14 +37,8 @@ function Footer() {
             
             {/* Social Icons */}
             <div className="flex space-x-5 pt-4">
-              <a href="#" className="p-3 sm:p-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
-                <Youtube size={24} className="text-white/80" />
-              </a>
-              <a href="#" className="p-3 sm:p-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
-                <Instagram size={24} className="text-white/80" />
-              </a>
-              <a href="#" className="p-3 sm:p-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
-                <Twitter size={24} className="text-white/80" />
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-3 sm:p-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                <Linkedin size={24} className="text-white/80" />
               </a>
             </div>
           </div>
@@ -54,17 +48,17 @@ function Footer() {
             {/* Column 1 */}
             <div className="flex flex-col space-y-5">
               <h4 className="text-white/90 font-bold tracking-widest text-base sm:text-lg uppercase mb-2" style={{ fontFamily: 'PlusJakartaSans-Bold, sans-serif' }}>Company</h4>
+              <Link href="/" className="text-slate-400 hover:text-orange-400 transition-colors text-base sm:text-lg" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Home</Link>
               <Link href="/about" className="text-slate-400 hover:text-orange-400 transition-colors text-base sm:text-lg" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>About Us</Link>
-              <a href="#" className="text-slate-400 hover:text-orange-400 transition-colors text-base sm:text-lg" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Services</a>
               <Link href="/projects" className="text-slate-400 hover:text-orange-400 transition-colors text-base sm:text-lg" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Projects</Link>
             </div>
             
             {/* Column 2 */}
             <div className="flex flex-col space-y-5">
-              <h4 className="text-white/90 font-bold tracking-widest text-base sm:text-lg uppercase mb-2" style={{ fontFamily: 'PlusJakartaSans-Bold, sans-serif' }}>Resources</h4>
-              <a href="#" className="text-slate-400 hover:text-orange-400 transition-colors text-base sm:text-lg" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Tools & Info</a>
-              <a href="#" className="text-slate-400 hover:text-orange-400 transition-colors text-base sm:text-lg" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Blog</a>
-              <Link href="/#contact-form" className="text-slate-400 hover:text-orange-400 transition-colors text-base sm:text-lg" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Contact</Link>
+              <h4 className="text-white/90 font-bold tracking-widest text-base sm:text-lg uppercase mb-2" style={{ fontFamily: 'PlusJakartaSans-Bold, sans-serif' }}>Services</h4>
+              <Link href="/services/ais-gis-gss" className="text-slate-400 hover:text-orange-400 transition-colors text-base sm:text-lg" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>AIS, GIS & GSS Substations</Link>
+              <Link href="/services/foundation-structural" className="text-slate-400 hover:text-orange-400 transition-colors text-base sm:text-lg" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Foundation & Structural</Link>
+              <Link href="/services/infrastructure" className="text-slate-400 hover:text-orange-400 transition-colors text-base sm:text-lg" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Infrastructure Development</Link>
             </div>
           </div>
         </div>
@@ -75,8 +69,8 @@ function Footer() {
             © {new Date().getFullYear()} NRK Construction Company. All Rights Reserved.
           </p>
           <div className="flex space-x-8 text-slate-400/70 text-sm sm:text-base" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
           </div>
         </div>
       </footer>
