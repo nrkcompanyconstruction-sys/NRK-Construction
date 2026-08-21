@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Calendar, MapPin, Building2, CheckCircle2, Clock } from "lucide-react";
 import { motion } from "framer-motion";
+import CursorGrid from "@/components/home_components/home-cmp/CursorGrid";
 
 interface Project {
   name: string;
@@ -159,8 +160,26 @@ function ProjectsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f3f6f8] pb-16" style={{ fontFamily: 'PlusJakartaSans-Bold, sans-serif' }}>
-      
+    <div className="relative min-h-screen bg-[#f3f6f8] pb-16" style={{ fontFamily: 'PlusJakartaSans-Bold, sans-serif' }}>
+      {/* Full-page CursorGrid background */}
+      <div className="pointer-events-none fixed inset-0 z-0">
+        <CursorGrid
+          cellSize={64}
+          color="#111827"
+          radius={170}
+          falloff="smooth"
+          holdTime={500}
+          fadeDuration={900}
+          lineWidth={1}
+          maxOpacity={0.22}
+          fillOpacity={0.025}
+          gridOpacity={0.035}
+          cellRadius={4}
+          clickPulse={false}
+          pulseSpeed={500}
+        />
+      </div>
+
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-[#06111f] text-white pt-32 pb-20 px-5 sm:px-8 lg:px-12 rounded-b-[40px] shadow-[0_28px_90px_rgba(6,17,31,0.15)] mb-12">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_30%,rgba(249,115,22,0.16),transparent_31%),linear-gradient(90deg,rgba(2,6,14,0.94)_0%,rgba(2,6,14,0.80)_38%,rgba(2,6,14,0.30)_68%,rgba(2,6,14,0.18)_100%)]" />
@@ -191,26 +210,43 @@ function ProjectsPage() {
         
         {/* Stats Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          {/* Total Projects — dot-grid + orange glow */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-            className="bg-white rounded-[28px] p-8 text-center border border-slate-100 shadow-[0_4px_20px_rgba(15,23,42,0.03)]"
+            className="relative overflow-hidden bg-white rounded-[28px] p-8 text-center border border-slate-100 shadow-[0_4px_20px_rgba(15,23,42,0.03)]"
           >
-            <div className="text-4xl md:text-5xl font-bold text-slate-950 mb-2">38+</div>
-            <div className="text-slate-500 font-medium text-sm tracking-wide uppercase" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Total Projects</div>
+            <div className="pointer-events-none absolute inset-0 [background-image:radial-gradient(circle,rgba(15,23,42,0.08)_1px,transparent_1px)] [background-size:20px_20px]" />
+            <div className="pointer-events-none absolute -top-10 -right-10 h-36 w-36 rounded-full bg-orange-400/[0.10] blur-3xl" />
+            <div className="relative z-10">
+              <div className="text-4xl md:text-5xl font-bold text-slate-950 mb-2">38+</div>
+              <div className="text-slate-500 font-medium text-sm tracking-wide uppercase" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Total Projects</div>
+            </div>
           </motion.div>
+
+          {/* Completed — diagonal lines + green glow */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
-            className="bg-white rounded-[28px] p-8 text-center border border-slate-100 shadow-[0_4px_20px_rgba(15,23,42,0.03)]"
+            className="relative overflow-hidden bg-white rounded-[28px] p-8 text-center border border-slate-100 shadow-[0_4px_20px_rgba(15,23,42,0.03)]"
           >
-            <div className="text-4xl md:text-5xl font-bold text-green-500 mb-2">34+</div>
-            <div className="text-slate-500 font-medium text-sm tracking-wide uppercase" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Completed</div>
+            <div className="pointer-events-none absolute inset-0 [background-image:repeating-linear-gradient(135deg,rgba(15,23,42,0.035)_0px,rgba(15,23,42,0.035)_1px,transparent_1px,transparent_18px)]" />
+            <div className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 h-36 w-36 rounded-full bg-green-400/[0.09] blur-3xl" />
+            <div className="relative z-10">
+              <div className="text-4xl md:text-5xl font-bold text-green-500 mb-2">34+</div>
+              <div className="text-slate-500 font-medium text-sm tracking-wide uppercase" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Completed</div>
+            </div>
           </motion.div>
+
+          {/* Ongoing — square grid + orange glow */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-white rounded-[28px] p-8 text-center border border-slate-100 shadow-[0_4px_20px_rgba(15,23,42,0.03)]"
+            className="relative overflow-hidden bg-white rounded-[28px] p-8 text-center border border-slate-100 shadow-[0_4px_20px_rgba(15,23,42,0.03)]"
           >
-            <div className="text-4xl md:text-5xl font-bold text-orange-500 mb-2">4</div>
-            <div className="text-slate-500 font-medium text-sm tracking-wide uppercase" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Ongoing</div>
+            <div className="pointer-events-none absolute inset-0 [background-image:linear-gradient(rgba(15,23,42,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.05)_1px,transparent_1px)] [background-size:20px_20px]" />
+            <div className="pointer-events-none absolute -top-10 -left-10 h-36 w-36 rounded-full bg-orange-400/[0.10] blur-3xl" />
+            <div className="relative z-10">
+              <div className="text-4xl md:text-5xl font-bold text-orange-500 mb-2">4</div>
+              <div className="text-slate-500 font-medium text-sm tracking-wide uppercase" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>Ongoing</div>
+            </div>
           </motion.div>
         </div>
 
@@ -266,85 +302,97 @@ function ProjectsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-[32px] p-8 sm:p-10 shadow-[0_12px_40px_rgba(15,23,42,0.04)] border border-slate-100 hover:shadow-[0_20px_60px_rgba(15,23,42,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col"
+              className="relative overflow-hidden bg-white rounded-[32px] p-8 sm:p-10 shadow-[0_12px_40px_rgba(15,23,42,0.04)] border border-slate-100 hover:shadow-[0_20px_60px_rgba(15,23,42,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col"
             >
-              {/* Project Header */}
-              <div className="flex justify-between items-start mb-6 flex-wrap gap-4">
-                <div className="flex-1 min-w-[200px]">
-                  <h3 className="text-2xl font-bold text-slate-950 mb-3 leading-tight">
-                    {project.name}
-                  </h3>
-                  <div className="flex items-center gap-2 text-slate-600">
-                    <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500">
-                      <Building2 size={16} />
+              {/* Alternating geometric pattern */}
+              {index % 2 === 0 ? (
+                <div className="pointer-events-none absolute inset-0 [background-image:radial-gradient(circle,rgba(15,23,42,0.07)_1px,transparent_1px)] [background-size:22px_22px]" />
+              ) : (
+                <div className="pointer-events-none absolute inset-0 [background-image:repeating-linear-gradient(135deg,rgba(15,23,42,0.035)_0px,rgba(15,23,42,0.035)_1px,transparent_1px,transparent_20px)]" />
+              )}
+              {/* Corner glow accent */}
+              <div className={`pointer-events-none absolute rounded-full blur-3xl ${index % 2 === 0 ? '-top-12 -right-12 h-40 w-40 bg-orange-400/[0.08]' : '-top-12 -left-12 h-40 w-40 bg-sky-400/[0.08]'}`} />
+              <div className={`pointer-events-none absolute rounded-full blur-2xl ${index % 2 === 0 ? '-bottom-8 -left-8 h-28 w-28 bg-sky-300/[0.06]' : '-bottom-8 -right-8 h-28 w-28 bg-orange-300/[0.06]'}`} />
+
+              <div className="relative z-10 flex flex-col flex-1">
+                {/* Project Header */}
+                <div className="flex justify-between items-start mb-6 flex-wrap gap-4">
+                  <div className="flex-1 min-w-[200px]">
+                    <h3 className="text-2xl font-bold text-slate-950 mb-3 leading-tight">
+                      {project.name}
+                    </h3>
+                    <div className="flex items-center gap-2 text-slate-600">
+                      <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500">
+                        <Building2 size={16} />
+                      </div>
+                      <span className="text-sm font-bold tracking-wide" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>{project.client}</span>
                     </div>
-                    <span className="text-sm font-bold tracking-wide" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>{project.client}</span>
+                  </div>
+                  
+                  <div className="flex flex-col gap-3 items-end shrink-0" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>
+                    <span
+                      className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border ${
+                        project.status === "completed"
+                          ? "bg-green-50 text-green-600 border-green-200"
+                          : "bg-orange-50 text-orange-600 border-orange-200"
+                      }`}
+                    >
+                      {project.status === "completed" ? (
+                        <span className="flex items-center gap-1.5">
+                          <CheckCircle2 size={14} />
+                          Completed
+                        </span>
+                      ) : (
+                        <span className="flex items-center gap-1.5">
+                          <Clock size={14} />
+                          Ongoing
+                        </span>
+                      )}
+                    </span>
+                    <span className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border ${getScaleBadge(project.scale)}`}>
+                      {getScaleLabel(project.scale)}
+                    </span>
                   </div>
                 </div>
-                
-                <div className="flex flex-col gap-3 items-end shrink-0" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>
-                  <span
-                    className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border ${
-                      project.status === "completed"
-                        ? "bg-green-50 text-green-600 border-green-200"
-                        : "bg-orange-50 text-orange-600 border-orange-200"
-                    }`}
-                  >
-                    {project.status === "completed" ? (
-                      <span className="flex items-center gap-1.5">
-                        <CheckCircle2 size={14} />
-                        Completed
-                      </span>
-                    ) : (
-                      <span className="flex items-center gap-1.5">
-                        <Clock size={14} />
-                        Ongoing
-                      </span>
-                    )}
-                  </span>
-                  <span className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border ${getScaleBadge(project.scale)}`}>
-                    {getScaleLabel(project.scale)}
-                  </span>
+
+                {/* Location */}
+                <div className="flex items-start gap-3 mb-6 p-4 rounded-2xl bg-slate-50/80 border border-slate-100 text-slate-700" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>
+                  <MapPin size={20} className="mt-0.5 flex-shrink-0 text-slate-400" />
+                  <span className="text-sm font-medium">{project.location}</span>
                 </div>
-              </div>
 
-              {/* Location */}
-              <div className="flex items-start gap-3 mb-6 p-4 rounded-2xl bg-slate-50/80 border border-slate-100 text-slate-700" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>
-                <MapPin size={20} className="mt-0.5 flex-shrink-0 text-slate-400" />
-                <span className="text-sm font-medium">{project.location}</span>
-              </div>
-
-              {/* Scope of Work */}
-              <div className="mb-8 flex-grow">
-                <h4 className="text-sm font-bold text-slate-900 mb-3 uppercase tracking-wide">Scope of Work</h4>
-                <p className="text-base text-slate-600 leading-relaxed" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>
-                  {project.scopeOfWork}
-                </p>
-              </div>
-
-              {/* Timeline */}
-              <div className="flex flex-wrap sm:flex-nowrap items-center gap-4 sm:gap-6 pt-6 border-t border-slate-100" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500">
-                    <Calendar size={18} />
-                  </div>
-                  <div>
-                    <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">Start Date</div>
-                    <div className="text-sm font-semibold text-slate-900">{project.startDate}</div>
-                  </div>
+                {/* Scope of Work */}
+                <div className="mb-8 flex-grow">
+                  <h4 className="text-sm font-bold text-slate-900 mb-3 uppercase tracking-wide">Scope of Work</h4>
+                  <p className="text-base text-slate-600 leading-relaxed" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>
+                    {project.scopeOfWork}
+                  </p>
                 </div>
-                
-                <div className="hidden sm:block w-px h-10 bg-slate-200"></div>
-                
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500">
-                    <Calendar size={18} />
-                  </div>
-                  <div>
-                    <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">
-                      {project.status === "ongoing" ? "Expected Completion" : "Completion Date"}
+
+                {/* Timeline */}
+                <div className="flex flex-wrap sm:flex-nowrap items-center gap-4 sm:gap-6 pt-6 border-t border-slate-100" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500">
+                      <Calendar size={18} />
                     </div>
-                    <div className="text-sm font-semibold text-slate-900">{project.completionDate}</div>
+                    <div>
+                      <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">Start Date</div>
+                      <div className="text-sm font-semibold text-slate-900">{project.startDate}</div>
+                    </div>
+                  </div>
+                  
+                  <div className="hidden sm:block w-px h-10 bg-slate-200"></div>
+                  
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500">
+                      <Calendar size={18} />
+                    </div>
+                    <div>
+                      <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">
+                        {project.status === "ongoing" ? "Expected Completion" : "Completion Date"}
+                      </div>
+                      <div className="text-sm font-semibold text-slate-900">{project.completionDate}</div>
+                    </div>
                   </div>
                 </div>
               </div>

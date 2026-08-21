@@ -190,6 +190,7 @@ function Home6() {
                   <div className="block">
                     <div className="relative overflow-hidden rounded-[28px] bg-[#071320] p-6 text-white sm:p-8 lg:p-10">
                       <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(56,189,248,0.18),transparent_30%),radial-gradient(circle_at_18%_80%,rgba(249,115,22,0.18),transparent_30%)]" />
+                      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:42px_42px]" />
                       <div className="relative">
                         <div className="flex items-center gap-1">
                           {Array.from({ length: testimonial.rating }).map((_, starIndex) => (

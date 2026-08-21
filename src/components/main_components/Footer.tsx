@@ -12,6 +12,7 @@ function Footer() {
         {/* Background Gradients */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_30%,rgba(249,115,22,0.12),transparent_35%),radial-gradient(circle_at_20%_80%,rgba(56,189,248,0.08),transparent_40%)] pointer-events-none" />
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:42px_42px] pointer-events-none" />
         
         {/* Huge Watermark */}
         <div 

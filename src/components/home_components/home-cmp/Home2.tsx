@@ -67,30 +67,38 @@ function Home2() {
         style={{ fontFamily: 'PlusJakartaSans-Bold, sans-serif' }}
       >
         <motion.div
-          className="rounded-[28px] border border-white/70 bg-white/80 p-6 shadow-[0_22px_70px_rgba(15,23,42,0.08)] backdrop-blur-md sm:p-8 lg:p-10"
+          className="relative overflow-hidden rounded-[28px] border border-white/70 bg-white/80 p-6 shadow-[0_22px_70px_rgba(15,23,42,0.08)] backdrop-blur-md sm:p-8 lg:p-10"
           variants={itemVariants}
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-2 text-xs uppercase tracking-[0.18em] text-orange-600">
-            <BadgeCheck className="h-4 w-4" />
-            About NRK
+          {/* Dot-grid pattern */}
+          <div className="pointer-events-none absolute inset-0 [background-image:radial-gradient(circle,rgba(15,23,42,0.09)_1px,transparent_1px)] [background-size:22px_22px]" />
+          {/* Soft corner glow accents */}
+          <div className="pointer-events-none absolute -top-16 -right-16 h-56 w-56 rounded-full bg-orange-400/[0.08] blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-sky-400/[0.07] blur-2xl" />
+
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-2 text-xs uppercase tracking-[0.18em] text-orange-600">
+              <BadgeCheck className="h-4 w-4" />
+              About NRK
+            </div>
+
+            <h2 className="mt-8 max-w-xl text-3xl font-bold leading-tight text-slate-950 sm:text-4xl lg:text-5xl">
+              Built for demanding power infrastructure environments.
+            </h2>
+
+            <p className="mt-5 max-w-xl text-base leading-8 text-slate-600 sm:text-lg" style={{ fontFamily: 'Inter-24pt-Medium, sans-serif' }}>
+              NRK Construction Company specializes in civil construction works for power substations, combining field discipline, technical coordination, and dependable delivery for high-voltage infrastructure.
+            </p>
+
+            <button
+              onClick={() => router.push('/about')}
+              aria-label="Go to About Us page"
+              className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-950 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-slate-800 sm:w-auto"
+            >
+              Know our story
+              <ArrowUpRight className="h-4 w-4" />
+            </button>
           </div>
-
-          <h2 className="mt-8 max-w-xl text-3xl font-bold leading-tight text-slate-950 sm:text-4xl lg:text-5xl">
-            Built for demanding power infrastructure environments.
-          </h2>
-
-          <p className="mt-5 max-w-xl text-base leading-8 text-slate-600 sm:text-lg" style={{ fontFamily: 'Inter-24pt-Medium, sans-serif' }}>
-            NRK Construction Company specializes in civil construction works for power substations, combining field discipline, technical coordination, and dependable delivery for high-voltage infrastructure.
-          </p>
-
-          <button
-            onClick={() => router.push('/about')}
-            aria-label="Go to About Us page"
-            className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-950 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-slate-800 sm:w-auto"
-          >
-            Know our story
-            <ArrowUpRight className="h-4 w-4" />
-          </button>
         </motion.div>
 
         <motion.div

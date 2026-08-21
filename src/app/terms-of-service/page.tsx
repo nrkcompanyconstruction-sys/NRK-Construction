@@ -1,11 +1,31 @@
+'use client'
 import React from 'react'
 import Link from 'next/link'
 import { HiArrowLeft } from 'react-icons/hi2'
+import CursorGrid from '@/components/home_components/home-cmp/CursorGrid'
 
 export default function TermsOfServicePage() {
   return (
-    <div className="min-h-screen bg-[#f3f6f8] pt-32 pb-24 px-5 sm:px-8 lg:px-12" style={{ fontFamily: 'Inter-24pt-Medium, sans-serif' }}>
-      <div className="max-w-4xl mx-auto">
+    <div className="relative min-h-screen bg-[#f3f6f8] pt-32 pb-24 px-5 sm:px-8 lg:px-12" style={{ fontFamily: 'Inter-24pt-Medium, sans-serif' }}>
+      {/* Full-page CursorGrid background */}
+      <div className="pointer-events-none fixed inset-0 z-0">
+        <CursorGrid
+          cellSize={64}
+          color="#111827"
+          radius={170}
+          falloff="smooth"
+          holdTime={500}
+          fadeDuration={900}
+          lineWidth={1}
+          maxOpacity={0.22}
+          fillOpacity={0.025}
+          gridOpacity={0.035}
+          cellRadius={4}
+          clickPulse={false}
+          pulseSpeed={500}
+        />
+      </div>
+      <div className="relative z-10 max-w-4xl mx-auto">
         <Link href="/" className="inline-flex items-center gap-2 text-slate-500 hover:text-orange-600 mb-10 transition-colors font-medium text-sm tracking-wide uppercase">
           <HiArrowLeft className="w-5 h-5" />
           Back to Home

@@ -4,10 +4,29 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { HiArrowLeft } from 'react-icons/hi2'
 import { ArrowUpRight } from 'lucide-react'
+import CursorGrid from '@/components/home_components/home-cmp/CursorGrid'
 
 export default function FoundationStructuralPage() {
   return (
-    <div className="min-h-screen bg-[#f3f6f8] pb-16" style={{ fontFamily: 'PlusJakartaSans-Bold, sans-serif' }}>
+    <div className="relative min-h-screen bg-[#f3f6f8] pb-16" style={{ fontFamily: 'PlusJakartaSans-Bold, sans-serif' }}>
+      {/* Full-page CursorGrid background */}
+      <div className="pointer-events-none fixed inset-0 z-0">
+        <CursorGrid
+          cellSize={64}
+          color="#111827"
+          radius={170}
+          falloff="smooth"
+          holdTime={500}
+          fadeDuration={900}
+          lineWidth={1}
+          maxOpacity={0.22}
+          fillOpacity={0.025}
+          gridOpacity={0.035}
+          cellRadius={4}
+          clickPulse={false}
+          pulseSpeed={500}
+        />
+      </div>
       
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-[#06111f] text-white pt-32 pb-24 px-5 sm:px-8 lg:px-12 rounded-b-[40px] shadow-[0_28px_90px_rgba(6,17,31,0.15)] mb-16">
@@ -197,6 +216,7 @@ export default function FoundationStructuralPage() {
         >
           {/* Subtle Background Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-orange-500/20 blur-[120px] rounded-full pointer-events-none" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:42px_42px]" />
           
           <div className="relative z-10">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Need Foundation & Structural Solutions?</h2>

@@ -109,6 +109,7 @@ function Home4() {
           />
         </div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_15%,rgba(56,189,248,0.18),transparent_28%),radial-gradient(circle_at_18%_72%,rgba(249,115,22,0.18),transparent_30%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:42px_42px]" />
 
         <div className="relative z-10">
           <motion.div className="mb-8 flex flex-col justify-between gap-5 lg:mb-12 lg:flex-row lg:items-end" variants={itemVariants}>
