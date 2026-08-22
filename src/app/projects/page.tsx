@@ -370,7 +370,7 @@ function ProjectsPage() {
                 </div>
 
                 {/* Timeline */}
-                <div className="flex flex-wrap sm:flex-nowrap items-center gap-4 sm:gap-6 pt-6 border-t border-slate-100" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>
+                {/* <div className="flex flex-wrap sm:flex-nowrap items-center gap-4 sm:gap-6 pt-6 border-t border-slate-100" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500">
                       <Calendar size={18} />
@@ -394,7 +394,7 @@ function ProjectsPage() {
                       <div className="text-sm font-semibold text-slate-900">{project.completionDate}</div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </motion.div>
           ))}
