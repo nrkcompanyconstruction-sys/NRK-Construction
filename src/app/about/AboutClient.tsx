@@ -98,7 +98,7 @@ export default function AboutPage() {
                     Our journey began with a vision to contribute to India&apos;s power infrastructure development 
                     by providing high-quality civil construction services for electrical substations. Today, 
                     we are proud to have successfully executed numerous complex projects across various voltage levels, from 
-                    33 kV to 400 kV, serving major utilities and industrial clients nationwide.
+                    33 kV to 765 kV, serving major utilities and industrial clients nationwide.
                   </p>
                   <p>
                     What sets us apart is our dedication to quality, safety, and rigorous execution. 

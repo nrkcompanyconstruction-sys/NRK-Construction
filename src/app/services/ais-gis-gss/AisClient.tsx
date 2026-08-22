@@ -54,7 +54,7 @@ export default function AisGisGssPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}
           >
-            Complete civil construction works for high-voltage substations from 33 kV to 400 kV
+            Complete civil construction works for high-voltage substations from 33 kV to 765 kV
           </motion.p>
         </div>
       </section>
@@ -72,7 +72,7 @@ export default function AisGisGssPage() {
               <p className="leading-relaxed">
                 NRK specializes in comprehensive civil construction works for Air Insulated Substations (AIS), 
                 Gas Insulated Substations (GIS), and Gas Insulated Switchgear Substations (GSS), handling 
-                voltage levels from 33 kV to 400 kV.
+                voltage levels from 33 kV to 765 kV.
               </p>
               <p className="leading-relaxed">
                 Our expertise ensures the highest standards of reliability, safety, and efficiency in power 
