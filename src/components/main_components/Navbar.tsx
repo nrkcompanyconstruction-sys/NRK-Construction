@@ -50,15 +50,13 @@ function Navbar() {
           {/* Left: Logo */}
           <Link href="/" className="flex items-center space-x-3 group">
             <Image
-              src="/nrk_logo.png" 
-              alt="Logo"
-              width={56}
-              height={56}
-              className="h-10 w-10 sm:h-11 sm:w-11 transition-transform group-hover:scale-105"
+              src="/navbar_logo.jpg"
+              alt="NRK Construction Company"
+              width={280}
+              height={102}
+              className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105"
+              priority
             />
-            <span className="hidden sm:block text-white font-bold text-lg tracking-wide" style={{ fontFamily: 'PlusJakartaSans-Bold, sans-serif' }}>
-              NRK Construction
-            </span>
           </Link>
 
           {/* Center: Desktop Menu */}
@@ -150,8 +148,13 @@ function Navbar() {
               {/* Mobile Menu Header */}
               <div className="sticky top-0 z-10 flex items-center justify-between p-6 border-b border-white/10 bg-[#020912]/95 backdrop-blur-xl">
                 <div className="flex items-center space-x-3">
-                  <Image src="/nrk_logo.png" alt="Logo" width={40} height={40} className="h-10 w-10" />
-                  <span className="font-bold text-lg text-white" style={{ fontFamily: 'PlusJakartaSans-Bold, sans-serif' }}>NRK</span>
+                  <Image
+                    src="/navbar_logo.jpg"
+                    alt="NRK Construction Company"
+                    width={280}
+                    height={102}
+                    className="h-10 w-auto object-contain"
+                  />
                 </div>
                 <button 
                   onClick={toggleMenu}

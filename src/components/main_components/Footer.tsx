@@ -27,10 +27,13 @@ function Footer() {
           {/* Left: Logo + Tagline */}
           <div className="flex flex-col space-y-8 max-w-xl">
             <div className="flex items-center space-x-4">
-              <Image src="/nrk_logo.png" alt="Logo" width={64} height={64} className="h-12 w-12 sm:h-16 sm:w-16" />
-              <span className="font-bold text-2xl sm:text-3xl lg:text-4xl tracking-tight" style={{ fontFamily: 'PlusJakartaSans-Bold, sans-serif' }}>
-                NRK Construction
-              </span>
+              <Image
+                src="/footer_logo.png"
+                alt="NRK Construction Company"
+                width={620}
+                height={308}
+                className="h-auto w-full max-w-[280px] sm:max-w-[360px] object-contain"
+              />
             </div>
             <p className="text-slate-300/85 text-base sm:text-lg lg:text-xl leading-relaxed" style={{ fontFamily: "Inter-24pt-Medium, sans-serif" }}>
               Powering modern infrastructure with precision construction. Dependable execution for high-voltage infrastructure across the nation.

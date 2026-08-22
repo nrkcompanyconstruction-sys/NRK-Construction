@@ -95,8 +95,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* Structured Data – Organization */}
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <Navbar />
+        {children}
+        <Footer />
+
+        {/* Structured Data – Organization (in body to avoid hydration conflicts) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -105,7 +111,7 @@ export default function RootLayout({
               "@type": "Organization",
               name: "NRK Construction Company",
               url: siteUrl,
-              logo: `${siteUrl}/nrk_logo.png`,
+              logo: `${siteUrl}/navbar_logo.jpg`,
               description:
                 "NRK Construction Company specializes in civil construction for AIS, GIS & GSS substations, powerhouses, RCC roads, and complete power infrastructure projects across India.",
               email: "nrkcompanyconstruction@gmail.com",
@@ -124,7 +130,7 @@ export default function RootLayout({
             }),
           }}
         />
-        {/* Structured Data – Website (Sitelinks SearchBox) */}
+        {/* Structured Data – WebSite / Sitelinks SearchBox */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -144,13 +150,6 @@ export default function RootLayout({
             }),
           }}
         />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Navbar />
-        {children}
-        <Footer />
       </body>
     </html>
   );
