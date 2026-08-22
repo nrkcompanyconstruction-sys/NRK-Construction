@@ -50,7 +50,7 @@ function Navbar() {
           {/* Left: Logo */}
           <Link href="/" className="flex items-center space-x-3 group">
             <Image
-              src="/navbar_logo.jpg"
+              src="/navbar_logo.png"
               alt="NRK Construction Company"
               width={280}
               height={102}
